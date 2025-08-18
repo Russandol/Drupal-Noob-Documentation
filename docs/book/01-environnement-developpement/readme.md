@@ -1,26 +1,26 @@
 # README
 
-Maintenant que nous avons mis en place notre environnement Docker et organisé nos commandes Make, il est crucial de
+Maintenant que nous avons mis en place notre environnement **Docker** et organisé nos commandes **Make**, il est crucial de
 documenter notre projet.
 
-Le fichier `README.md` est l'élément central de la communication technique d'un projet. C'est la porte d'entrée
+Le fichier *README.md* est l'élément central de la communication technique d'un projet. C'est la porte d'entrée
 principale qui doit permettre à n'importe qui de comprendre le projet et de l'utiliser.
 
 L'objectif est de répondre à une question toute simple : si un nouveau développeur intègre le projet, est-il capable
 de l'installer et de l'utiliser en moins de 15 minutes ?
 
-Et bien entendu, un fichier `README.md` doit évoluer en même temps que l'application. Il est donc important que ce fichier
+Et bien entendu, un fichier *README.md* doit évoluer en même temps que l'application. Il est donc important que ce fichier
 soit mis à jour régulièrement.
 
-Un fichier `README.md` complet doit contenir :
-- Les prérequis techniques
-- La procédure d'installation
-- La configuration du projet
-- Les commandes disponibles
-- La structure du projet
-- Et les sections complémentaires comme la résolution des problèmes courants, les workflows, les tests, etc..
+Un fichier *README.md* complet doit contenir :
+- Les **prérequis techniques**
+- La **procédure d'installation**
+- La **configuration** du projet
+- Les **commandes** disponibles
+- La **structure** du projet
+- Et les sections complémentaires comme la **résolution des problèmes** courants, les **workflows**, les **tests**, etc..
 
-A la racine du projet, créez un fichier `README.md` avec le contenu suivant :
+A la racine du projet, créez un fichier *README.md* avec le contenu suivant :
 
 ```markdown
     # Drupal Project
@@ -138,7 +138,7 @@ A la racine du projet, créez un fichier `README.md` avec le contenu suivant :
 ```
    
 
-Notre environnement de développement est enfin prêt ! Nous avons tout ce qu'il faut pour gérer un projet Drupal 11. Et 
+Notre environnement de développement est enfin prêt ! Nous avons tout ce qu'il faut pour gérer un projet **Drupal 11**. Et 
 glaçage sur la part de flan : notre environnement est évolutif et extensible !
 
-Il est temps d'installer Drupal maintenant.
+Il est temps d'installer **Drupal** maintenant.

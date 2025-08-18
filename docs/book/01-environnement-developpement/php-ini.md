@@ -1,11 +1,11 @@
-# Environnement de développement : Docker
+# Fichier de configuration PHP
 
 ## php.example.ini
 
 Tout comme pour les variables d'environnement, notre configuration du service `drupal` nous permet de surcharger la 
-configuration des variables d'environnement de PHP avec nos propres valeurs.
+configuration des variables d'environnement de **PHP** avec nos propres valeurs.
 
-A la racine du projet créer un fichier `.docker/php/php.example.ini` et ajoutez le contenu suivant : 
+A la racine du projet créer un fichier *.docker/php/php.example.ini* et ajoutez le contenu suivant : 
 
 ```ini
 [PHP]
@@ -23,4 +23,4 @@ upload_max_filesize = 64M
 display_errors = On
 ```
 
-Cette configuration de PHP correspond à celle recommandée pour un projet Drupal 11.
+Cette configuration de **PHP** correspond à celle recommandée pour un projet **Drupal 11**.

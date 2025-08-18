@@ -1,17 +1,22 @@
-# Environnement de développement : Docker
+# Docker Compose
 
-Docker est une plateforme qui permet d'encapsuler des applications et leurs dépendances dans des conteneurs isolés.
-Pour notre projet Drupal 11, Docker va nous permettre de créer rapidement un environnement de développement complet
+**Docker** est une plateforme qui permet d'encapsuler des applications et leurs dépendances dans des conteneurs isolés.
+Pour notre projet **Drupal 11**, **Docker** va nous permettre de créer rapidement un environnement de développement complet
 et identique pour tous.
 
-Pour ça nous allons devoir mettre en place plusieurs fichiers qui vont définir la configuration de Docker.
+**Docker Compose** est l’outil qui décrit et orchestre plusieurs conteneurs comme un seul service applicatif, 
+via un fichier de configuration (*compose.yml*) où l’on définit services, réseaux, volumes, variables d’environnement 
+et dépendances. 
+
+Il permet de démarrer, arrêter et observer toute la stack avec quelques commandes, plutôt que de lancer chaque 
+conteneur manuellement.
 
 ## compose.yml
 
-Le fichier `compose.yml` est un fichier au format YAML qui définit et configure l'ensemble des services,
+Le fichier *compose.yml* est un fichier au format YAML qui définit et configure l'ensemble des services,
 réseaux et volumes nécessaires à notre application. C'est le "plan d'architecture" de notre environnement Docker.
 
-Pour notre projet Drupal 11, nous aurons besoin des services :
+Pour notre projet **Drupal 11**, nous aurons besoin des services :
 
 - **Drupal**, qui contiendra tout notre code,
 - **MariaDB**, qui contiendra notre base de données,
@@ -21,12 +26,12 @@ Pour notre projet Drupal 11, nous aurons besoin des services :
 
 Nous aurons également besoin de plusieurs volumes pour enregistrer nos données :
 
-- data, pour la base de données,
-- redis-data, pour le cache.
+- **data**, pour la base de données,
+- **redis-data**, pour le cache.
 
 ### Création des services
 
-Commencez par créer le fichier `compose.yml` à la racine du projet et ajoutez le code suivant :
+Commencez par créer le fichier *compose.yml* à la racine du projet et ajoutez le code suivant :
 
 ```yaml
 services:
@@ -36,7 +41,7 @@ volumes:
 
 #### Drupal
 
-Nous allons créer le premier service : drupal.
+Nous allons créer le premier service : **drupal**.
 
 En dessous de `services:`, ajoutez le code suivant.
 
@@ -95,10 +100,10 @@ build:
 ```
 
 La partie `build` permet de définir quelle image sera utilisée pour construire le service. Ici, nous précisons
-que nous allons utiliser un fichier `Dockerfile`. On s'occupera de ce fichier plus tard.
+que nous allons utiliser un fichier *Dockerfile*. On s'occupera de ce fichier plus tard.
 
-Nous créons également un argument `PHP_VERSION` dans lequel on définit la version de PHP que l'on souhaite. Cet argument
-sera transmis au `Dockerfile`.
+Nous créons également un argument `PHP_VERSION` dans lequel on définit la version de **PHP** que l'on souhaite. Cet argument
+sera transmis au *Dockerfile*.
 
 La valeur `${PHP_VERSION:-8.3}` signifie que nous allons utiliser la variable d'environnement `PHP_VERSION` avec `8.3`
 comme valeur par défaut.
@@ -111,7 +116,7 @@ env_file:
 ```
 
 `env_file` nous permet de spécifier à Docker quel fichier d'environnement utiliser. Comme vu précédemment, nous allons
-utiliser des variables d'environnement. Il faut donc spécifier à Docker quel fichier d'environnement utiliser.
+utiliser des variables d'environnement. Il faut donc spécifier à **Docker** quel fichier d'environnement utiliser.
 
 Nous nous occuperons de la création de ces fichiers d'environnement plus tard.
 
@@ -138,8 +143,8 @@ ports:
 ```
 
 Nous précisons les ports utilisés pour atteindre notre service
-- "80:80" pour le port HTTP.
-- "443:443" pour le port HTTPS.
+- `80:80` pour le port HTTP.
+- `443:443` pour le port HTTPS.
 
 ##### volumes
 
@@ -151,18 +156,18 @@ volumes:
 
 Défini les volumes montés pour notre service.
 
-`./:/app`
+- `./:/app`
 
 Monte le répertoire courant du projet (`./`) à l'intérieur du conteneur au chemin `/app`.
 Cela signifie que tous les fichiers de votre projet local seront accessibles dans le dossier `/app` du conteneur ce
 qui permet de travailler sur votre code en local tout en l'exécutant dans le conteneur. Les modifications apportées
 localement sont immédiatement reflétées dans le conteneur sans avoir à reconstruire l'image
 
-`./.docker/php/php.ini:/usr/local/etc/php/conf.d/custom.ini`
+- `./.docker/**/php.ini:/usr/local/etc/php/conf.d/custom.ini`
 
-Monte un fichier de configuration PHP personnalisé depuis votre projet (`./.docker/php/php.ini`) vers l'emplacement
-standard des configurations PHP dans le conteneur ce qui permet de personnaliser la configuration PHP sans modifier
-l'image Docker. Les paramètres définis dans ce fichier surchargeront la configuration PHP par défaut du conteneur.
+Monte un fichier de configuration **PHP** personnalisé depuis votre projet (`./.docker/php/php.ini`) vers l'emplacement
+standard des configurations **PHP** dans le conteneur ce qui permet de personnaliser la configuration **PHP** sans modifier
+l'image **Docker**. Les paramètres définis dans ce fichier surchargeront la configuration **PHP** par défaut du conteneur.
 
 ##### environment
 
@@ -199,7 +204,7 @@ La traduction de cette section est : toutes les minutes, utilise la commande `cu
 en 10 secondes alors le test est échoué et s'il y a 3 tests échoués consécutifs, alors le service est considéré comme
 "unhealthy".
 
-`restart: unless-stopped` précise que le conteneur redémarrera automatiquement s'il plante ou si l'hôte Docker redémarre.
+`restart: unless-stopped` précise que le conteneur redémarrera automatiquement s'il plante ou si l'hôte **Docker** redémarre.
 
 #### MariaDB
 
@@ -229,8 +234,8 @@ mariadb:
 ````
 
 Comme vous pouvez le constater, nous utilisons un fichier de variables d'environnement différent. Lors de la configuration
-de Drupal, nous aurons besoin de ces variables d'environnement. Raison pour laquelle nous les définissons dans un fichier
-d'environnement distinct. Nous pourrons ainsi réutiliser ces variables dans Drupal sans devoir importer l'ensemble des 
+de **Drupal**, nous aurons besoin de ces variables d'environnement. Raison pour laquelle nous les définissons dans un fichier
+d'environnement distinct. Nous pourrons ainsi réutiliser ces variables dans **Drupal** sans devoir importer l'ensemble des 
 variables d'environnement.
 
 #### PHPMyAdmin
@@ -311,10 +316,10 @@ pour avoir une meilleure isolation entre projets et éviter les conflits.
 
 ## Conclusion
 
-Dans ce chapitre, nous avons configuré notre environnement de développement Docker avec un fichier complet qui définit
-tous les services nécessaires pour notre projet Drupal 11 : `docker-compose.yml`
+Dans ce chapitre, nous avons configuré notre environnement de développement **Docker** avec un fichier complet qui définit
+tous les services nécessaires pour notre projet **Drupal 11** : *docker-compose.yml*
 
-- Un service **Drupal** pour exécuter notre application
+- Un service `drupal` pour exécuter notre application
 - Une base de données **MariaDB** pour stocker nos données
 - **PHPMyAdmin** pour administrer facilement notre base de données
 - **Redis** pour optimiser le cache de Drupal
@@ -322,11 +327,11 @@ tous les services nécessaires pour notre projet Drupal 11 : `docker-compose.yml
 
 Nous avons également configuré les volumes nécessaires pour assurer la persistance des données essentielles.
 
-Mais notre fichier ne peut pas être fonctionnel en l'état car nous faisons référence à de la configuration PHP et des
+Mais notre fichier ne peut pas être fonctionnel en l'état car nous faisons référence à de la configuration **PHP** et des
 variables d'environnement.
 
 Nous devons donc compléter notre configuration avec trois fichiers essentiels :
-- `.docker/php/php.example.ini` pour définir les valeurs par défaut de la configuration PHP.
+- `.docker/php/php.example.ini` pour définir les valeurs par défaut de la configuration **PHP**.
 - `.docker/.example.env.database` pour définir les valeurs par défaut des variables d'environnement de la base de données.
 - `.docker/.example.env.docker` pour définir les valeurs par défaut des variables d'environnement pour la configuration 
 de Docker.

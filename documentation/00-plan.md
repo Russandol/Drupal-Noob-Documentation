@@ -1,3 +1,14 @@
+
+en gras : 
+- outils (docker)
+- framework (drupal)
+- langage
+
+en italique : 
+- fichiers
+
+Toujours sauter une ligne sous les titres
+
 # Table des matières :
 
 Le but de cette documentation et de mettre en place et de comprendre un environnement Drupal pour un ou plusieurs projets

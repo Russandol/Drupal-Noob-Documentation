@@ -1,22 +1,22 @@
-# Environnement de développement : Docker
+# Les variables d'environnement
 
 ## example.env
 
 Comme vous l'avez remarqué, nous utilisons des variables d'environnement dans notre fichier `compose.yml` ce qui a plusieurs avantages :
-- Séparation de la configuration et du code : les variables d'environnement permettent de garder les informations sensibles
+- **Séparation de la configuration et du code** : les variables d'environnement permettent de garder les informations sensibles
   (mots de passe, clés API) et les paramètres spécifiques à l'environnement en dehors du code source.
-- Flexibilité entre environnements : une même application peut fonctionner dans différents environnements (développement,
+- **Flexibilité entre environnements** : une même application peut fonctionner dans différents environnements (développement,
   recette, production) sans modification du code, simplement en changeant les variables d'environnements.
-- Personnalisation : nous pourrons plus facilement faire évoluer notre configuration en changeant les valeurs des variables
+- **Personnalisation** : nous pourrons plus facilement faire évoluer notre configuration en changeant les valeurs des variables
   d'environnement.
 
 Nous allons donc créer des fichiers modèles contenant les variables d'environnements ainsi que les valeurs par défaut.
 
 Nous pourrions tout mettre dans un seul fichier modèle, mais nous aurons besoin plus tard des variables de configuration
-de la base de données pour configurer Drupal.
+de la base de données pour configurer **Drupal**.
 
-A la racine du projet créer un fichier `.docker/example.env.docker`. Comme ce fichier d'environnement sera spécifique à Docker
-nous le mettons dans un dossier `.docker` pour ne pas le confondre avec le fichier d'environnement de l'application.
+A la racine du projet créer un fichier *.docker/example.env.docker*. Comme ce fichier d'environnement sera spécifique à **Docker**
+nous le mettons dans un dossier *.docker* pour ne pas le confondre avec le fichier d'environnement de l'application.
 
 Nous pouvons maintenant ajouter nos variables :
 
@@ -44,7 +44,7 @@ XDEBUG_CLIENT_HOST=host.docker.internal
 XDEBUG_OUTPUT_DIR=/tmp/debug
 ```
 
-Ensuite, toujours à la racine du projet, créez un fichier `.docker/example.env.database` et ajoutez les variables suivantes :
+Ensuite, toujours à la racine du projet, créez un fichier *.docker/example.env.database* et ajoutez les variables suivantes :
 
 ```dotenv
 # MariaDB settings
@@ -62,9 +62,9 @@ DB_USER=db
 DB_PASSWORD=db
 ```
 
-## Pourquoi créer des fichiers `.example.env` et pas les fichiers `.env` directement ?
+## Pourquoi créer des fichiers *.example.env* et pas les fichiers *.env* directement ?
 
-Les fichiers `.example.env` servent de templates pour les vrais fichiers. Cette approche présente plusieurs avantages : 
+Les fichiers *.example.env* servent de templates pour les vrais fichiers. Cette approche présente plusieurs avantages : 
 
 - **Sécurité** : Ces fichiers contiennent souvent des informations sensibles (mot de passe, clés API, etc..) qui ne doivent
 jamais être versionnés dans Git.

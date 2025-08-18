@@ -7,19 +7,19 @@
 Comme nous l'avons vu précédemment, nous aurons besoin de taper régulièrement des lignes de commande à chaque fois
 que nous travaillerons sur notre projet.
 
-Heureusement nous avons les moyens de simplifier notre workflow grace à Make.
+Heureusement nous avons les moyens de simplifier notre workflow grace à **Make**.
 
-Créé en 1976 par Stuart Feldman aux Bell Labs, Make a d'abord été conçu pour la compilation.
+Créé en 1976 par Stuart Feldman aux Bell Labs, **Make** a d'abord été conçu pour la compilation.
 
 Aujourd'hui, il est l'un des outils d'automatisation les plus utilisés pour :
-- Orchestrer des conteneurs Docker.
-- Gérer des environnements de développement.
-- Automatiser les tests et le déploiement.
-- Standardiser les commandes dans les projets d'équipe.
+- **Orchestrer** des conteneurs **Docker**.
+- **Gérer des environnements** de développement.
+- **Automatiser** les tests et le déploiement.
+- **Standardiser** les commandes dans les projets d'équipe.
 
 ### Structure du fichier Makefile
 
-Les commandes sont écrites dans un fichier `Makefile` et doivent respecter la structure :
+Les commandes sont écrites dans un fichier *Makefile* et doivent respecter la structure :
 
 ```makefile
 cible: dépendance1 dépendance2
@@ -45,16 +45,16 @@ Dans cet exemple :
 - `make fichier.txt` créera un fichier avec le texte "Contenu du fichier".
 - `make tout` exécutera les deux tâches précédentes puis affichera un message final.
 
-Le symbole "@" avant la ligne de commande spécifie que la commande ne doit pas être écrite avant d'être exécutée.
+Le symbole `@` avant la ligne de commande spécifie que la commande ne doit pas être écrite avant d'être exécutée.
 
-Sans le symbole "@" le résultat est :
+Sans le symbole `@` le résultat est :
 
 ```shell
 echo "Hello World!"
 Hello World!
 ```
 
-Avec le symbole "@" :
+Avec le symbole `@` :
 
 ```shell
 Hello World!
@@ -64,13 +64,13 @@ Hello World!
 
 ### Installation
 
-Commençons par vérifier si Make est installé avec la commande :
+Commençons par vérifier si **Make** est installé avec la commande :
 
 ```shell
 make --version
 ```
 
-Si le numéro de version s'affiche cela signifie que Make est déjà installé !
+Si le numéro de version s'affiche cela signifie que **Make** est déjà installé !
 
 Si ce n'est pas le cas, utilisez les commandes suivantes pour l'installer :
 
@@ -79,13 +79,13 @@ sudo apt update
 sudo apt install make
 ```
 
-Une fois l'installation terminée, créez le fichier Makefile (sans extension).
+Une fois l'installation terminée, créez le fichier *Makefile* (sans extension).
 
-### Commandes
+### Première commandes
 
 #### help
 
-Ouvrez le fichier Makefile et ajoutez le code suivant :
+Ouvrez le fichier *Makefile* et ajoutez le code suivant :
 
 ```makefile
 .PHONY: help
@@ -95,15 +95,15 @@ help:
     @echo "  make init      - Initialise les fichiers d'environnement."
 ```
 
-Nous venons de rajouter une commande "help" qui affichera le détail des commandes disponibles.
+Nous venons de rajouter une commande `help` qui affichera le détail des commandes disponibles.
 
 Et avant ça nous avons utilisé la directive `.PHONY` qui indique que certaines cibles ne représentent pas des fichiers
 réels, mais plutôt des actions ou des commandes à exécuter.
 
-Par défaut, Make fonctionne ainsi :
-- Il vérifie si la cible (target) existe sous forme de fichier dans le répertoire
-- Il vérifie si les dépendances sont plus récentes que la cible
-- Si la cible n'existe pas OU si une dépendance est plus récente, il exécute les commandes
+Par défaut, **Make** fonctionne ainsi :
+- Il vérifie si la cible (target) existe sous forme de fichier dans le répertoire.
+- Il vérifie si les dépendances sont plus récentes que la cible.
+- Si la cible n'existe pas OU si une dépendance est plus récente, il exécute les commandes.
 
 Avec `.PHONY`, les cibles seront toujours exécutées, peu importe s'il existe des fichiers portant le même nom.
 
@@ -113,16 +113,16 @@ Vous l'avez surement remarqué, dans la commande `help` nous avons défini la co
 les fichiers d'environnement.
 
 Comme nous l'avons vu lors de la création des fichiers de Docker, nous avons créé trois fichiers de configuration :
-- .docker/example.env.database : qui regroupe les variables d'environnements utilisées par Docker.
-- .docker/example.env.docker : qui regroupe les variables d'environnements utilisées par MariaDB et PHPMyAdmin.
-- .docker/php/php.example.ini : qui regroupe les configurations de PHP.
+- *.docker/example.env.database* : qui regroupe les variables d'environnements utilisées par **Docker**.
+- *.docker/example.env.docker* : qui regroupe les variables d'environnements utilisées par **MariaDB** et **PHPMyAdmin**.
+- *.docker/php/php.example.ini* : qui regroupe les configurations de **PHP**.
 
 Mais ces trois fichiers sont des templates avec des valeurs par défaut. A l'initialisation de notre projet, nous avons
 donc besoin de dupliquer ces fichiers.
 
-Nous allons donc créer la commande init qui s'occupera de les générer.
+Nous allons donc créer la commande `init` qui s'occupera de les générer.
 
-Ajoutons le code au fichier Makefile :
+Ajoutons le code au fichier *Makefile* :
 
 ```makefile
 .PHONY: help init
@@ -156,20 +156,20 @@ init:
 
 Ce que nous avons fait :
 - Nous avons ajouté la commande `init` à la directive `.PHONY`.
-- Si les fichiers `.docker/.env.database`, `.docker/.env.docker` et `.docker/php/php.ini` n'existe pas, nous dupliquons et renommons
-les fichiers `.docker/example.env.database`, `.docker/example.env.docker` et `.docker/php/php.example.ini`
+- Si les fichiers *.docker/.env.database*, *.docker/.env.docker* et *.docker/php/php.ini* n'existe pas, nous dupliquons et renommons
+les fichiers *.docker/example.env.database*, *.docker/example.env.docker* et *.docker/php/php.example.ini*.
 
-Félicitation, vous venez d'écrire votre première commande Make. Vous pouvez la tester avec la commande :
+Félicitation, vous venez d'écrire votre première commande **Make**. Vous pouvez la tester avec la commande :
 
 ```shell
 make init
 ```
 
-#### Commandes Docker
+### Commandes Docker
 
-Nous allons maintenant ajouter des commandes Make pour notre workflow Docker.
+Nous allons maintenant ajouter des commandes **Make** pour notre workflow **Docker**.
 
-##### Build
+#### Build
 
 ```makefile
 .PHONY: help init build
@@ -191,10 +191,10 @@ Les changements :
 - Nous avons rajouté une ligne dans la commande `help` pour décrire notre nouvelle commande.
 
 Puis, nous avons ajouté la commande `build`. Cette commande va commencer par appeller la commande `init` pour vérifier
-si les fichiers d'environnement existe bien. Enfin, nous avons simplement utilisé la commande `build` de Docker comme
+si les fichiers d'environnement existe bien. Enfin, nous avons simplement utilisé la commande `build` de **Docker** comme
 vu dans le chapitre précédent.
 
-##### Up
+#### Up
 
 ```makefile
 .PHONY: help init build dev
@@ -212,10 +212,10 @@ dev:
 	@echo "✅ Development environment started"
 ```
 
-Appeler cette méthode `dev` au lieu de `up` (pour correspondre à la commande Docker) nous permettra de faire la
+Appeler cette méthode `dev` au lieu de `up` (pour correspondre à la commande **Docker**) nous permettra de faire la
 distinction avec la commande pour l'environnement de production.
 
-##### Status
+#### Status
 
 ```makefile
 .PHONY: help init build dev status
@@ -233,7 +233,7 @@ status:
 	@docker compose ps
 ```
 
-#####  Logs
+####  Logs
 
 ```makefile
 .PHONY: help init build dev status logs
@@ -252,7 +252,7 @@ logs:
 	@docker compose logs -f
 ```
 
-##### Down
+#### Down
 
 ```makefile
 .PHONY: help init build dev status logs down
@@ -273,7 +273,7 @@ down:
 	@echo "✅ Development environment stopped"
 ```
 
-##### Restart
+#### Restart
 
 ```makefile
 .PHONY: help init build dev status logs down restart
@@ -292,9 +292,9 @@ help:
 restart: down dev
 ```
 
-Cette commande est très simple car elle se contente d'appeler les deux commandes déjà existantes `down` et `dev`
+Cette commande est très simple car elle se contente d'appeler les deux commandes déjà existantes `down` et `dev`.
 
-##### Shell
+#### Shell
 
 ```makefile
 .PHONY: help init build dev status logs down restart shell
@@ -315,7 +315,7 @@ shell:
 	@docker compose exec -u application drupal bash
 ```
 
-##### Commandes de production
+#### Commandes de production
 
 Nous avons fait le tour des commandes habituelles, il nous reste à traiter les versions des commandes `up`, `down`,
 `status` et `logs` pour l'environnement de production.
@@ -365,3 +365,6 @@ prod-logs:
 	@echo "📜 Displaying production logs (Ctrl+C to quit):"
 	@docker compose -f $(PROD_COMPOSE) logs -f
 ```
+
+Toutes nos commandes sont prêtes ! Je suis sur que vous avez hâte de les tester. Mais avant ça, nous avons une dernière
+chose à faire...
