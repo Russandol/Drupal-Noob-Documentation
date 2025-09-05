@@ -29,7 +29,16 @@ Ces commandes nous permettront de :
 - **Surveiller les logs** de notre application.
 - **Arrêter** proprement l'environnement quand nous avons terminé.
 
-Voyons ces commandes en détail.
+Mais avant de voir ces commandes en détail, il est nécessaire de bien comprendre le workflow de **Docker**.
+
+## Workflow Docker : build, up, down
+
+Le workflow **Docker** s'articule autour de trois commandes qui forment le cycle de vie de nos conteneurs.
+
+- **build** : construit (ou reconstruit) les images des services, interprète les directives du *Dockerfile*, prépare les
+volumes et les ports, etc..
+- **up** : crée les conteneurs à partir des images et démarre les services.
+- **down** : arrête proprement les services et supprime les conteneurs, mais conserve les volumes.
 
 ## Construire les images sans utiliser le cache
 
@@ -63,7 +72,11 @@ Cette commande :
 - Cible le service nommé `drupal`.
 - Lance une session `bash` intéractive dans ce conteneur.
 
-### Pourquoi utiliser l'utilisateur "application" ?
+Il faut bien comprendre que nous allons travailler avec des conteneurs. Les outils comme **Composer** sont installés à 
+l'intérieur de notre conteneur et ne sont pas disponibles sur notre machine. Nous devons donc avoir la possibilité de 
+nous connecter à notre conteneur et de lancer des commandes.
+
+> ❓ Pourquoi utiliser l'utilisateur "application" ?
 
 Il est très important d'utiliser l'utilisateur "application" car c'est l'utilisateur créé automatiquement dans l'image
 `webdevops/php-apache-dev` avec les privilèges et droits configurés.
@@ -90,12 +103,12 @@ Cette commande :
 docker compose down
 ```
 
-Cette commande exécute l'action d'arrêter et supprimer tous les conteneurs, réseaux et volumes créés par `up`.
+Cette commande exécute l'action d'arrêter et supprimer tous les conteneurs.
 
 ## Conclusion
 
 Nous avons donc tout ce qu'il nous faut pour gérer notre environnement **Docker**. Mais on ne va pas se mentir, plusieurs
-de ces commandes sont assez indigestes, et encore nous n'avons pas vu le cas où nous voulons lancer les commandes avec
+de ces commandes sont assez indigestes. Et encore, nous n'avons pas vu le cas où nous voulons lancer les commandes avec
 la configuration de production !
 
 Heureusement, nous avons une solution pour simplifier notre workflow !

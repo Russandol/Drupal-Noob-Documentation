@@ -1,6 +1,6 @@
 # Les variables d'environnement - .env.example
 
-Comme vous l'avez remarqué, nous utilisons des variables d'environnement dans notre fichier `compose.yml` ce qui a plusieurs avantages :
+Comme vous l'avez remarqué, nous utilisons des variables d'environnement dans notre fichier *compose.yml* ce qui a plusieurs avantages :
 - **Séparation de la configuration et du code** : les variables d'environnement permettent de garder les informations sensibles
   (mots de passe, clés API) et les paramètres spécifiques à l'environnement en dehors du code source.
 - **Flexibilité entre environnements** : une même application peut fonctionner dans différents environnements (développement,
@@ -15,7 +15,7 @@ A la racine du projet créer un fichier *.docker/.env.example*.
 > ❓ Pourquoi ne pas mettre le fichier directement à la racine du projet ?
 
 Lors de l'installation de **Drupal**, nous aurons besoin des variables d'environnement qui permettent de configurer la base de données.
-Pourquoi ne pas mettre le fichier directement à la racine du projet comme il n'est pas exclusif à **Docker** ? 
+Pourquoi ne pas mettre le fichier directement à la racine du projet comme son contenu n'est pas exclusif à **Docker** ? 
 
 Là c'est un choix personnel, je préfère organiser tout ce qui concerne la configuration de **Docker** dans un dossier *.docker*
 dédié.
@@ -67,16 +67,16 @@ DB_PASSWORD=db
 
 > ❓ Pourquoi créer un fichier *.env.example* et pas un fichier *.env* directement ?
 
-Le fichier *.env.example* sert de templates pour le vrai fichier. Cette approche présente plusieurs avantages : 
+Le fichier *.env.example* sert de templates pour le vrai fichier. Cette approche permet de répondre aux exigences suivantes : 
 
+- **Réutilisable** : Ils permettent à chaque développeur de créer facilement sa propre configuration locale en copiant le
+  template et en adaptant les valeurs selon son environnement.
 - **Sécurité** : Ce fichier contient souvent des informations sensibles (mot de passe, clés API, etc..) qui ne doivent
 jamais être versionnés dans Git.
-- **Réutilisable** : Ils permettent à chaque développeur de créer facilement sa propre configuration locale en copiant le 
-template et en adaptant les valeurs selon son environnement.
 - **Documentation** : Ils servent à montrer quelles variables sont nécessaires et leur format attendu.
 
 Cette méthode garantit que votre projet reste facilement partageable tout en préservant la sécurité et la flexibilité
 des configurations individuelles.
 
-Il faudra bien entendu indiquer dans la documentation que ces fichiers doivent être copié et renommé pour correspondre
+Il faudra bien entendu indiquer dans la documentation que ce fichier doit être copié et renommé pour correspondre
 au fonctionnement de **Docker**.

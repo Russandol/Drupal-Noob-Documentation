@@ -1,5 +1,7 @@
 # Docker Compose
 
+## C'est quoi Docker ?
+
 **Docker** est une plateforme qui permet d'encapsuler des applications et leurs dépendances dans des conteneurs isolés.
 Pour notre projet **Drupal 11**, **Docker** va nous permettre de créer rapidement un environnement de développement complet
 et identique pour tous.
@@ -14,14 +16,14 @@ conteneur manuellement.
 ## compose.yml
 
 Le fichier *compose.yml* est un fichier au format YAML qui définit et configure l'ensemble des services,
-réseaux et volumes nécessaires à notre application. C'est le "plan d'architecture" de notre environnement Docker.
+réseaux et volumes nécessaires à notre application. C'est le "plan d'architecture" de notre environnement **Docker**.
 
 Pour notre projet **Drupal 11**, nous aurons besoin des services :
 
 - **Drupal**, qui contiendra tout notre code,
 - **MariaDB**, qui contiendra notre base de données,
 - **PHPMyAdmin**, qui nous permettra de visualiser notre base de données via une interface,
-- **Redis**, qui nous permettra de gérer le cache de Drupal,
+- **Redis**, qui nous permettra de gérer le cache de **Drupal**,
 - **Mailhog**, qui nous permettra d'intercepter et tester l'envoie de mail.
 
 Nous aurons également besoin de plusieurs volumes pour enregistrer nos données :
@@ -29,7 +31,7 @@ Nous aurons également besoin de plusieurs volumes pour enregistrer nos données
 - **data**, pour la base de données,
 - **redis-data**, pour le cache.
 
-### Création des services
+## Création des services
 
 Commencez par créer le fichier *compose.yml* à la racine du projet et ajoutez le code suivant :
 
@@ -39,7 +41,7 @@ services:
 volumes:
 ```
 
-#### Drupal
+### Drupal
 
 Nous allons créer le premier service : **drupal**.
 
@@ -87,7 +89,7 @@ drupal:
 
 Voyons en détail la configuration de notre service.
 
-##### build
+#### build
 
 ```yaml
 build:
@@ -106,7 +108,7 @@ sera transmis au *Dockerfile*.
 La valeur `${PHP_VERSION:-8.3}` signifie que nous allons utiliser la variable d'environnement `PHP_VERSION` avec `8.3`
 comme valeur par défaut.
 
-##### depends_on
+#### depends_on
 
 ```yaml
 depends_on:
@@ -120,7 +122,7 @@ Cette configuration nous permet de préciser que notre service aura besoin de de
 plus nous précisons que le service `drupal` ne démarrera pas tant que ces deux services ne seront pas opérationnels.
 Sans cette condition, notre application pourrait démarrer avant que la base de données soit prête à accepter des connexions.
 
-##### ports
+#### ports
 
 ```yaml
 ports:
@@ -132,7 +134,7 @@ Nous précisons les ports utilisés pour atteindre notre service
 - `80:80` pour le port HTTP.
 - `443:443` pour le port HTTPS.
 
-##### volumes
+#### volumes
 
 ```yaml
 volumes:
@@ -151,11 +153,13 @@ localement sont immédiatement reflétées dans le conteneur sans avoir à recon
 
 - `./.docker/**/php.ini:/usr/local/etc/php/conf.d/custom.ini`
 
-Monte un fichier de configuration **PHP** personnalisé depuis votre projet (`./.docker/php/php.ini`) vers l'emplacement
+Monte un fichier de configuration **PHP** personnalisé depuis votre projet (*./.docker/php/php.ini*) vers l'emplacement
 standard des configurations **PHP** dans le conteneur ce qui permet de personnaliser la configuration **PHP** sans modifier
 l'image **Docker**. Les paramètres définis dans ce fichier surchargeront la configuration **PHP** par défaut du conteneur.
 
-##### environment
+Nous créerons le fichier *.docker/php/php.ini* plus tard.
+
+#### environment
 
 ```yaml
 environment:
@@ -172,7 +176,7 @@ environment:
 
 Nous pouvons également définir directement dans le service des variables d'environnement pour notre conteneur.
 
-##### healthcheck et restart
+#### healthcheck et restart
 
 ```yaml
 healthcheck:
@@ -192,7 +196,7 @@ en 10 secondes alors le test est échoué et s'il y a 3 tests échoués consécu
 
 `restart: unless-stopped` précise que le conteneur redémarrera automatiquement s'il plante ou si l'hôte **Docker** redémarre.
 
-#### MariaDB
+### MariaDB
 
 En dessous de notre service `drupal`, nous allons créer le service `mariadb`. Une fois encore soyez attentif à l'indentation,
 les services sont tous au même niveau.
@@ -217,12 +221,9 @@ mariadb:
       start_period: 40s
 ````
 
-Comme vous pouvez le constater, nous utilisons un fichier de variables d'environnement différent. Lors de la configuration
-de **Drupal**, nous aurons besoin de ces variables d'environnement. Raison pour laquelle nous les définissons dans un fichier
-d'environnement distinct. Nous pourrons ainsi réutiliser ces variables dans **Drupal** sans devoir importer l'ensemble des 
-variables d'environnement.
+Je pense que vous comprenez maintenant parfaitement les configurations, il n'est pas nécessaire de tout vous expliquer.
 
-#### PHPMyAdmin
+### PHPMyAdmin
 
 ````yaml
 phpmyadmin:
@@ -240,7 +241,7 @@ phpmyadmin:
     restart: unless-stopped
 ````
 
-#### Redis
+### Redis
 
 ````yaml
 redis:
@@ -258,7 +259,7 @@ redis:
     restart: unless-stopped
 ````
 
-#### Mailhog
+### Mailhog
 
 ````yaml
 mailhog:
@@ -272,7 +273,7 @@ mailhog:
 Tous nos services sont désormais configurés. Nous pouvons maintenant créer les volumes pour finaliser la configuration
 de notre container.
 
-### Création des volumes
+## Création des volumes
 
 Comme vous avez été attentif, vous avez remarqué que nous utilisons déjà les volumes nécessaires dans la configuration
 des services.
@@ -295,7 +296,7 @@ pour avoir une meilleure isolation entre projets et éviter les conflits.
 ## Conclusion
 
 Dans ce chapitre, nous avons configuré notre environnement de développement **Docker** avec un fichier complet qui définit
-tous les services nécessaires pour notre projet **Drupal 11** : *docker-compose.yml*
+tous les services nécessaires pour notre projet **Drupal 11** : *compose.yml*
 
 - Un service `drupal` pour exécuter notre application
 - Une base de données **MariaDB** pour stocker nos données
@@ -305,10 +306,10 @@ tous les services nécessaires pour notre projet **Drupal 11** : *docker-compose
 
 Nous avons également configuré les volumes nécessaires pour assurer la persistance des données essentielles.
 
-Mais notre fichier ne peut pas être fonctionnel en l'état car nous faisons référence à de la configuration **PHP** et des
+Mais notre fichier ne peut pas être fonctionnel en l'état, car nous faisons référence à de la configuration **PHP** et des
 variables d'environnement.
 
 Nous devons donc compléter notre configuration avec deux fichiers essentiels :
-- `.docker/.env.example` pour définir les valeurs par défaut des variables d'environnement de Docker.
-- `.docker/php/php.ini.example` pour définir les valeurs par défaut de la configuration **PHP**.
+- *.docker/.env.example* pour définir les valeurs par défaut des variables d'environnement de **Docker**.
+- *.docker/php/php.ini.example* pour définir les valeurs par défaut de la configuration **PHP**.
 

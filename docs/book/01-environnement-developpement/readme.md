@@ -67,8 +67,7 @@ A la racine du projet, créez un fichier *README.md* avec le contenu suivant :
     make init
     ```
     
-    Si nécessaire, effectuer les modifications dans les fichiers `.docker/.env.database`, `.docker/.env.database`
-    et `.docker/php/php.ini`.
+    Si nécessaire, effectuer les modifications dans les fichiers `.docker/.env` et `.docker/php/php.ini`.
     
     🐳 Construire les images Docker
     ```bash
@@ -80,26 +79,26 @@ A la racine du projet, créez un fichier *README.md* avec le contenu suivant :
     make dev
     ```
     
-    🌐 Ouvrir en tant qu'administrateur le fichier `C:\Windows\System32\drivers\etc\hosts` et ajouter la ligne :
+    🌐 Ouvrir en tant qu'administrateur le fichier `C:\Windows\System32\drivers\etc\hosts` et ajouter la ligne 
+    (remplacer <drupal-project> par le nom du projet) :
     ```bash
-    127.0.0.1    drupal-project.test
+    127.0.0.1    <drupal-project>.test
     ```
     
     ## 🔧 Configuration
     
     ### Fichiers de configuration
     
-    - Variables d'environnement Docker `.docker/.env.docker`
-      - Variables d'environnement de base de données `.docker/.env.database`
-      - Configuration PHP `.docker/php/php.ini`
-      - Services Docker de développement `compose.yml`
-      - Services Docker de production `compose-prod.yml`
+    - Variables d'environnement `.docker/.env`
+    - Configuration PHP `.docker/php/php.ini`
+    - Services Docker de développement `compose.yml`
+    - Services Docker de production `compose-prod.yml`
     
     ### Accès aux services
     
-    - **Site web** : [http://drupal-project.test](http://drupal-project.test)
-      - **PHPMyAdmin** : [http://drupal-project.test:8080](http://drupal-project.test:8080)
-      - **Mailhog** (emails de test) : [http://drupal-project.test:8025](http://drupal-project.test:8025)
+    - **Site web** : [http://<drupal-project>.test](http://<drupal-project>.test)
+    - **PHPMyAdmin** : [http://<drupal-project>.test:8080](http://<drupal-project>.test:8080)
+    - **Mailhog** (emails de test) : [http://<drupal-project>.test:8025](http://<drupal-project>.test:8025)
     
     ## 🐳 Commandes Docker disponibles
     
@@ -138,7 +137,7 @@ A la racine du projet, créez un fichier *README.md* avec le contenu suivant :
 ```
    
 
-Notre environnement de développement est enfin prêt ! Nous avons tout ce qu'il faut pour gérer un projet **Drupal 11**. Et 
-glaçage sur la part de flan : notre environnement est évolutif et extensible !
+Notre environnement de développement est enfin prêt ! Nous avons tout ce qu'il faut pour gérer un projet **Drupal 11**. 
+Et glaçage sur la part de flan : notre environnement est évolutif et extensible !
 
 Il est temps d'installer **Drupal** maintenant.

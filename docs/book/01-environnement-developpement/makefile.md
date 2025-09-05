@@ -287,7 +287,7 @@ help:
 restart: down dev
 ```
 
-Cette commande est très simple car elle se contente d'appeler les deux commandes déjà existantes `down` et `dev`.
+Cette commande est très simple, car elle se contente d'appeler les deux commandes déjà existantes `down` et `dev`.
 
 #### Shell
 

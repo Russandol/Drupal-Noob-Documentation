@@ -32,9 +32,9 @@ La différence avec la configuration de développement est que nous n'aurons pas
 ### phpmyadmin
 
 Très utile en développement mais présente plusieurs risques :
-- PHPMyAmdmin a connu de nombreuses vulnérabilités au fil des ans.
+- **PHPMyAmdmin** a connu de nombreuses vulnérabilités au fil des ans (tentatives d'exploitation de vulnérabilités 
+connues ou de force brute).
 - Risque d'erreurs humaines catastrophiques (suppression de tables, modification de données critiques).
-- Tentatives d'exploitation de vulnérabilités connues ou de force brute.
 - Peut révéler des informations sensibles sur l'architecture de l'application.
 
 ### mailhog

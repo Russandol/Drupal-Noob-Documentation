@@ -11,7 +11,8 @@ défini dans la propriété `build` le chemin vers le fichier *Dockerfile* qui n
 
 Construisons pas à pas notre image **Docker**.
 
-Créez un fichier *Dockerfile* (sans extension). Une fois le fichier créé, nous allons y ajouter nos instructions
+Créez un fichier *Dockerfile* (sans extension) à la racine du projet. Une fois le fichier créé, nous allons y ajouter 
+nos instructions
 
 ## Définir l'image
 
@@ -39,6 +40,9 @@ ARG PHP_VERSION=8.3
 # ${PHP_VERSION} utilise la valeur définie précédemment, ce qui rend notre Dockerfile flexible
 FROM webdevops/php-apache-dev:${PHP_VERSION}
 ```
+
+Nous retrouvons la variable `PHP_VERSION` que nous avons défini en tant qu'argument (`args`) dans le service `drupal`
+du fichier *compose.yml*.
 
 ## Extensions PHP
 
@@ -96,3 +100,8 @@ ENTRYPOINT, COPY et ADD qui suivent utiliseront `/app` comme répertoire courant
 ```Dockerfile
 WORKDIR /app
 ```
+
+## Conclusion
+
+Et voilà, notre environnement de développement est prêt ! Nous pourrions nous arrêter là et commencer à installer **Drupal**.
+Mais nous pouvons aller plus loin dans la configuration.
