@@ -1,7 +1,7 @@
 # Mise à jour du fichier README.md
 
 Maintenant que nous avons modifié notre projet en installant Drupal et revu le fonctionnement de Make, il est temps
-de mettre à jour le fichier `README.md`.
+de mettre à jour le fichier *README.md*.
 
 Je sais que la documentation est une étape barbante dans la vie d'un projet. Mais c'est une étape essentielle pour la
 maintenabilité. Dites-vous que chaque minute investie dans un bon README vous fera économiser des heures de support et
@@ -10,9 +10,9 @@ d'explications répétitives.
 De plus il est toujours plus simple de documenter au fur et à mesure du développement plutôt que de tout faire d'un
 coup à la fin.
 
-Prenons donc l'habitude de mettre le fichier `README.md` à jour régulièrement !
+Prenons donc l'habitude de mettre le fichier *README.md* à jour régulièrement !
 
-Ouvrez le fichier `README.md` et ajoutez nos dernières modifications comme suit :
+Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit :
 
 ```markdown
 # Drupal Noob
@@ -152,7 +152,7 @@ Ouvrez le fichier `README.md` et ajoutez nos dernières modifications comme suit
 ```
 
 Les modifications que nous avons effectuées :
-- Ajout de la version de Drupal dans la `Stack technique`.
-- Modification des étapes d'installation pour inclure l'installation de Drupal.
+- Ajout de la version de **Drupal** dans la `Stack technique`.
+- Modification des étapes d'installation pour inclure l'installation de **Drupal**.
 - Ajout de la section `Commandes Drupal disponibles`.
 - Modification de la section `Structure du projet` pour inclure le dossier `make` et la structure de dossiers de Drupal.

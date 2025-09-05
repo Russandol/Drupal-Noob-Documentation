@@ -34,17 +34,18 @@ Voyons ces commandes en détail.
 ## Construire les images sans utiliser le cache
 
 ```shell
-docker compose build --no-cache
+docker compose build --env-file .docker/.env --no-cache
 ```
 
 Cette commande :
 - Exécute l'action `build` pour construire toutes les images définies dans le fichier *compose.yml*.
+- l'option `--env-file` indique à **Docker** quel fichier contient les variables d'environnement.
 - L'option `--no-cache` force **Docker** à reconstruire les images depuis zéro sans utiliser le cache d'images existant.
 
 ## Démarrer les conteneurs en mode détaché
 
 ```shell
-docker compose up -d
+docker compose up --env-file .docker/.env -d
 ```
 
 Cette commande :

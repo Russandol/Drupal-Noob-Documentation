@@ -9,5 +9,6 @@ export default {
     { text: 'Commandes make pour Drupal', link: '/02-drupal-installation/drupal-makefile' },
     { text: 'Mise à jour Readme', link: '/02-drupal-installation/maj-readme' },
     { text: 'Fichiers settings', link: '/02-drupal-installation/settings-files' },
+    { text: 'Mise à jour .gitignore', link: '/02-drupal-installation/maj-gitignore' },
   ]
 }

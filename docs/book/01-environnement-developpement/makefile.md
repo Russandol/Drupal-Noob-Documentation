@@ -112,12 +112,11 @@ Avec `.PHONY`, les cibles seront toujours exécutées, peu importe s'il existe d
 Vous l'avez surement remarqué, dans la commande `help` nous avons défini la commande `make init` qui permet d'initialiser
 les fichiers d'environnement.
 
-Comme nous l'avons vu lors de la création des fichiers de Docker, nous avons créé trois fichiers de configuration :
-- *.docker/example.env.database* : qui regroupe les variables d'environnements utilisées par **Docker**.
-- *.docker/example.env.docker* : qui regroupe les variables d'environnements utilisées par **MariaDB** et **PHPMyAdmin**.
-- *.docker/php/php.example.ini* : qui regroupe les configurations de **PHP**.
+Comme nous l'avons vu lors de la création des fichiers de Docker, nous avons créé deux fichiers de configuration :
+- *.docker/.env.example* : qui regroupe les variables d'environnements utilisées par **Docker**.
+- *.docker/php/php.ini.example* : qui regroupe les configurations de **PHP**.
 
-Mais ces trois fichiers sont des templates avec des valeurs par défaut. A l'initialisation de notre projet, nous avons
+Mais ces deux fichiers sont des templates avec des valeurs par défaut. À l'initialisation de notre projet, nous avons
 donc besoin de dupliquer ces fichiers.
 
 Nous allons donc créer la commande `init` qui s'occupera de les générer.
@@ -133,21 +132,14 @@ help:
 
 init:
 	@if [ ! -f .docker/.env.database ]; then \
-  		cp .docker/example.env.database .docker/.env.database; \
-  		echo "✅ File .docker/.env.database created from example"; \
+  		cp .docker/.env.example .docker/.env; \
+  		echo "✅ File .docker/.env created from example"; \
   	else \
-		echo "ℹ️ File .docker/.env.database already exists"; \
-	fi
-
-	@if [ ! -f .docker/.env.docker ]; then \
-		cp .docker/example.env.docker .docker/.env.docker; \
-		echo "✅ File .docker/.env.docker created from example"; \
-	else \
-		echo "ℹ️ File .docker/.env.docker already exists"; \
+		echo "ℹ️ File .docker/.env already exists"; \
 	fi
 
 	@if [ ! -f .docker/php/php.ini ]; then \
-		cp .docker/php/php.example.ini .docker/php/php.ini; \
+		cp .docker/php/php.ini.example .docker/php/php.ini; \
 		echo "✅ File .docker/php/php.ini created from example"; \
 	else \
 		echo "ℹ️ File .docker/php/php.ini already exists"; \
@@ -156,8 +148,8 @@ init:
 
 Ce que nous avons fait :
 - Nous avons ajouté la commande `init` à la directive `.PHONY`.
-- Si les fichiers *.docker/.env.database*, *.docker/.env.docker* et *.docker/php/php.ini* n'existe pas, nous dupliquons et renommons
-les fichiers *.docker/example.env.database*, *.docker/example.env.docker* et *.docker/php/php.example.ini*.
+- Si les fichiers *.docker/.env*  et *.docker/php/php.ini* n'existe pas, nous dupliquons et renommons
+les fichiers *.docker/.env.example*, et *.docker/php/php.ini.example*.
 
 Félicitation, vous venez d'écrire votre première commande **Make**. Vous pouvez la tester avec la commande :
 
@@ -172,6 +164,8 @@ Nous allons maintenant ajouter des commandes **Make** pour notre workflow **Dock
 #### Build
 
 ```makefile
+ENV_FILE = .docker/.env
+
 .PHONY: help init build
 
 help:
@@ -182,15 +176,16 @@ help:
 # Code à ajouter à la fin du fichier
 build: init
 	@echo "🔨 Building Docker images for development..."
-	@docker compose build --no-cache
+	@docker compose build --env_file $(ENV_FILE) --no-cache
 	@echo "✅ Images built"
 ```
 
 Les changements :
+- Nous avons créé une variable `ENV_FILE` qui contient le chemin du fichier *.docker/.env*.
 - Nous avons rajouté notre cible dans la directive `.PHONY`.
 - Nous avons rajouté une ligne dans la commande `help` pour décrire notre nouvelle commande.
 
-Puis, nous avons ajouté la commande `build`. Cette commande va commencer par appeller la commande `init` pour vérifier
+Puis, nous avons ajouté la commande `build`. Cette commande va commencer par appeler la commande `init` pour vérifier
 si les fichiers d'environnement existe bien. Enfin, nous avons simplement utilisé la commande `build` de **Docker** comme
 vu dans le chapitre précédent.
 
@@ -208,7 +203,7 @@ help:
 # Code à ajouter à la fin du fichier
 dev:
 	@echo "🚀 Starting development environment..."
-	@docker compose up -d
+	@docker compose up --env_file $(ENV_FILE) -d
 	@echo "✅ Development environment started"
 ```
 
@@ -344,12 +339,12 @@ help:
 # Code à ajouter à la fin du fichier
 prod-build: init
 	@echo "🔨 Rebuilding Docker images for production..."
-	@docker compose -f $(PROD_COMPOSE) build --no-cache
+	@docker compose -f $(PROD_COMPOSE) --env_file $(ENV_FILE) build --no-cache
 	@echo "✅ Images rebuilt"
 
 prod:
 	@echo "🚀 Starting production environment..."
-	@docker compose -f $(PROD_COMPOSE) up -d
+	@docker compose -f $(PROD_COMPOSE) --env_file $(ENV_FILE) up -d
 	@echo "✅ Production environment started"
 
 prod-down:
@@ -366,5 +361,5 @@ prod-logs:
 	@docker compose -f $(PROD_COMPOSE) logs -f
 ```
 
-Toutes nos commandes sont prêtes ! Je suis sur que vous avez hâte de les tester. Mais avant ça, nous avons une dernière
+Toutes nos commandes sont prêtes ! Je suis sûr que vous avez hâte de les tester. Mais avant ça, nous avons une dernière
 chose à faire...

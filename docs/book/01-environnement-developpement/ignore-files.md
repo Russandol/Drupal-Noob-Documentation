@@ -21,8 +21,7 @@ Créez le fichier *.gitignore* à la racine du projet et copier le texte suivant
 .idea/
 
 # Docker configuration
-.docker/.env.database
-.docker/.env.docker
+.docker/.env
 .docker/php/php.ini
 
 ```
@@ -52,10 +51,8 @@ Toujours à la racine du projet, créez le fichier *.dockerignore* et copier le 
 compose.yml
 compose-prod.yml
 Dockerfile
-.docker/example.env.database
-.docker/example.env.docker
-.docker/.env.database
-.docker/.env.docker
-.docker/php/php.example.ini
+.docker/.env.example
+.docker/.env
+.docker/php/php.ini.example
 .docker/php/php.ini
 ```

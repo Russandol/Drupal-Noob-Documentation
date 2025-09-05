@@ -1,6 +1,6 @@
 # Drupal - Architecture des fichiers
 
-Notre site Drupal est installé et initialisé.
+Notre site **Drupal** est installé et initialisé.
 
 Notre projet a maintenant l'architecture suivante :
 ```

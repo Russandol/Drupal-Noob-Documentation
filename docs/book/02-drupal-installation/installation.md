@@ -2,18 +2,18 @@
 
 ## Présentation de Composer
 
-`Composer` est le gestionnaire de dépendances standard de PHP, similaire à npm pour JavaScript ou pip pour Python.
-Il permet de télécharger et installer automatiquement les bibliothèques et frameworks PHP nécessaires à notre projet,
+**Composer** est le gestionnaire de dépendances standard de **PHP**, similaire à **npm** pour **JavaScript** ou **pip** pour **Python**.
+Il permet de télécharger et installer automatiquement les bibliothèques et frameworks **PHP* nécessaires à notre projet,
 en gérant leurs versions et leurs interdépendances.
 
-Dans le contexte de Drupal, `Composer` facilite grandement l'installation du core, des modules contributifs et des
+Dans le contexte de Drupal, **Composer** facilite grandement l'installation du core, des modules contributifs et des
 thèmes, tout en maintenant une structure de projet cohérente et en simplifiant les mises à jour.
 
-Comme nous l'avons configuré dans un tutoriel précédent, notre environnement de développement repose sur `Docker` avec
-plusieurs conteneurs dédiés. Dans cette configuration, `Composer` est automatiquement disponible grâce à
-l'image Docker `webdevops/php-apache-dev` que nous utilisons pour notre conteneur PHP.
+Comme nous l'avons configuré dans un tutoriel précédent, notre environnement de développement repose sur **Docker** avec
+plusieurs conteneurs dédiés. Dans cette configuration, **Composer** est automatiquement disponible grâce à
+l'image Docker `webdevops/php-apache-dev` que nous utilisons pour notre conteneur **PHP**.
 
-Cette image préconfigurée inclut non seulement PHP et Apache, mais également `Composer` installé globalement,
+Cette image préconfigurée inclut non seulement **PHP** et **Apache**, mais également **Composer** installé globalement,
 ce qui nous évite d'avoir à l'installer manuellement dans notre conteneur.
 
 ## Installation
@@ -23,12 +23,12 @@ Si ce n'est déjà fait, démarrez le container `dev` avec la commande :
 make dev
 ```
 
-Pour utiliser `Composer`, nous devons nous connecter à notre container en shell.
+Pour utiliser **Composer**, nous devons nous connecter à notre container en shell.
 ```shell
 make shell
 ```
 
-Si vous souhaitez vérifier que `Composer` est bien présent dans notre container, vous pouvez simplement taper la commande :
+Si vous souhaitez vérifier que **Composer** est bien présent dans notre container, vous pouvez simplement taper la commande :
 ```shell
 composer
 ```
@@ -45,15 +45,15 @@ Quelque chose comme ceci devrait s'afficher avec ensuite la liste de toutes les 
 Composer version 2.8.9 2025-05-13 14:01:37
 ```
 
-Tout est prêt, nous pouvons lancer l'installation de Drupal. Tapez la commande suivante :
+Tout est prêt, nous pouvons lancer l'installation de **Drupal**. Tapez la commande suivante :
 ```shell
 composer create-project drupal/recommended-project drupal-temp
 ```
 
-Cette commande télécharge et installe la dernière version stable de Drupal avec toutes ses dépendances dans un dossier
-temporaire (que nous avons défini à `drupal-temp`).
+Cette commande télécharge et installe la dernière version stable de **Drupal** avec toutes ses dépendances dans un dossier
+temporaire (que nous avons défini à *drupal-temp*).
 
-A la fin de la procédure, `Composer` affiche le message suivant :
+A la fin de la procédure, **Composer** affiche le message suivant :
 
 ```shell
   Congratulations, you’ve installed the Drupal codebase
@@ -74,14 +74,15 @@ Next steps:
     * chat: https://www.drupal.org/node/314178
 ```
 
-Parmi les liens utiles vers la documentation, on nous conseille de supprimer le module qui affiche ce message.
+Parmi les liens utiles vers la documentation, on nous conseille de supprimer le module qui affiche ce message. Ce module
+n'étant plus utile, nous pouvons en effet le supprimer.
 
 Nous allons donc jouer la commande suivante :
 ```shell
 composer remove drupal/core-project-message
 ```
 
-Par mesure de sécurité et afin d'éviter d'écraser des données existantes, `Composer` n'accepte pas d'installer un projet
+Par mesure de sécurité et afin d'éviter d'écraser des données existantes, **Composer** n'accepte pas d'installer un projet
 dans un répertoire qui contient déjà des fichiers. C'est pour cette raison que nous effectuons l'installation dans un
 dossier temporaire.
 
@@ -99,11 +100,11 @@ Enfin... pas tout à fait.
 
 ## Initialisation du site Drupal
 
-L'installation de Drupal via `Composer` avec la commande `create-project` ne constitue que la première étape du processus
-de mise en place d'un site Drupal fonctionnel. Cette commande télécharge uniquement les fichiers source du framework et ses
-dépendances PHP, mais elle ne crée pas encore un site opérationnel.
+L'installation de **Drupal** via **Composer** avec la commande `create-project` ne constitue que la première étape du processus
+de mise en place d'un site **Drupal** fonctionnel. Cette commande télécharge uniquement les fichiers source du framework et ses
+dépendances **PHP**, mais elle ne crée pas encore un site opérationnel.
 
-Pour finaliser cette installation, Drupal propose une interface graphique. Sur votre navigateur préféré, rendez-vous
+Pour finaliser cette installation, **Drupal** propose une interface graphique. Sur votre navigateur préféré, rendez-vous
 à l'adresse `127.0.0.1`.
 
 ### 1.Choose language
@@ -118,10 +119,10 @@ Bien qu'il soit tentant d'installer directement Drupal dans sa langue natale, je
 l'installation initiale en anglais. Il est bien entendu possible de télécharger des packs de langues par la suite.
 
 Les raisons sont :
-- Traductions incomplètes : certains textes peuvent rester en anglais si les traductions ne sont pas à 100%.
-- Modules contribués : beaucoup n'ont pas de traductions françaises disponibles immédiatement.
-- Formation simplifiée : de nombreux tutos sont en anglais, il sera plus simple avec une interface identique.
-- Debug plus simple : les messages d'erreurs seront en anglais ce qui facilite la recherche sur Google ou la documentation.
+- **Traductions incomplètes** : certains textes peuvent rester en anglais si les traductions ne sont pas à 100%.
+- **Modules contribués** : beaucoup n'ont pas de traductions françaises disponibles immédiatement.
+- **Formation simplifiée** : de nombreux tutos sont en anglais, il sera plus simple avec une interface identique.
+- **Debug plus simple** : les messages d'erreurs seront en anglais ce qui facilite la recherche sur **Google** ou la documentation.
 
 Il n'y a pas vraiment de risque ou de problème à charger une autre langue que l'anglais. Je trouve juste celà plus pratique.
 
@@ -149,7 +150,7 @@ avec le profil **Minimal**.
 La première raison est que ça nous donnera l'occasion de voir un à un tous les modules principaux à la création d'un site
 internet.
 
-Et surtout, dans le cas où plusieurs développeurs auront à travailler sur le même projet Drupal, il faut pouvoir permettre
+Et surtout, dans le cas où plusieurs développeurs auront à travailler sur le même projet **Drupal**, il faut pouvoir permettre
 l'installation à partir de configuration existante. Et ce n'est possible qu'en effectuant une installation minimale. (Sans avoir
 à effectuer des modifications dans les fichiers de configs).
 
@@ -164,7 +165,7 @@ Vous n'avez rien à faire durant cette étape. Elle est d'ailleurs automatiqueme
 ![Initialisation de Drupal - Configurer la base de données](images/drupal-01-installation-03.jpg)
 *Initialisation de Drupal - Configurer la base de données*
 
-Cette étape permet de configurer la base de données qui sera utilisée par Drupal.
+Cette étape permet de configurer la base de données qui sera utilisée par **Drupal**.
 
 Pour ça nous allons utiliser les identifiants que nous avons dans le fichier `.docker/.env`.
 
@@ -173,15 +174,15 @@ Pour ça nous allons utiliser les identifiants que nous avons dans le fichier `.
 - Database username : db
 - Database password : db
 
-Ouvrez ensuite la section `Advanced options`.
+Ouvrez ensuite la section "Advanced options".
 
 - Host : mariadb
 - Port number : 3306
 - Transaction isolation level : READ COMMITED
 - Table name prefix : *laissez vide*
 
-Le choix du `Host` est dicté par notre configuration Docker. Rappelez-vous, le service qui gère la base de données nous l'avons
-appelé `mariadb`.
+Le choix du `Host` est dicté par notre configuration Docker. Rappelez-vous, nous avons
+appelé `mariadb` le service qui gère la base de données.
 
 Concernant la configuration `Transaction isolation level`, cette ligne fait référence au niveau d'isolation des transactions
 de la base de données, un paramètre important pour la gestion de la concurrence. Avec plusieurs utilisateurs connectés
@@ -211,17 +212,12 @@ Une fois les informations entrées, validez le formulaire en cliquant sur "Save 
 
 ## Félicitation
 
-[//]: # (TODO revoir cette partie.)
-Votre site Drupal est désormais installé et initialisé... mais il affiche une erreur...
+![Initialisation de Drupal - Fin d'installation](images/drupal-01-installation-05.jpg)
+*Initialisation de Drupal - Fin d'installation*
 
-``No route found for "GET http://127.0.0.1/"``
+Votre site **Drupal** est désormais installé et initialisé... et qu'est-ce qu'il est moche !
 
-Ne vous inquiétez pas, c'est tout à fait normal !
+Mais ne vous inquiétez pas, c'est tout à fait normal. N'oubliez pas que nous avons effectué une installation minimale.
+Nous n'avons donc pas de contenu, ni de templates, ni de modules, etc..
 
-Rappelez-vous, nous avons choisi le profil `Minimal` lors de l'installation. Notre site n'a donc
-- Aucun type de contenu (pas de page, pas d'article).
-- Aucune page d'accueil par défaut.
-- Aucun contenu initial.
-
-Mais nous avons encore des choses à faire et à voir avant de nous occuper du contenu de notre site.
-
+Et avant de nous occuper de tout ça faisons un point sur cette installation.

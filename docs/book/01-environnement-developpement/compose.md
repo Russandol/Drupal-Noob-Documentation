@@ -55,8 +55,6 @@ drupal:
       dockerfile: Dockerfile
       args:
         PHP_VERSION: ${PHP_VERSION:-8.3}
-    env_file:
-      - .docker/.env.docker
     depends_on:
       mariadb:
         condition: service_healthy
@@ -107,18 +105,6 @@ sera transmis au *Dockerfile*.
 
 La valeur `${PHP_VERSION:-8.3}` signifie que nous allons utiliser la variable d'environnement `PHP_VERSION` avec `8.3`
 comme valeur par défaut.
-
-##### env_file
-
-```yaml
-env_file:
-  - .docker/.env.docker
-```
-
-`env_file` nous permet de spécifier à Docker quel fichier d'environnement utiliser. Comme vu précédemment, nous allons
-utiliser des variables d'environnement. Il faut donc spécifier à **Docker** quel fichier d'environnement utiliser.
-
-Nous nous occuperons de la création de ces fichiers d'environnement plus tard.
 
 ##### depends_on
 
@@ -214,8 +200,6 @@ les services sont tous au même niveau.
 ````yaml
 mariadb:
     image: mariadb:${DB_VERSION:-10.6} # Image Docker MariaDB avec la version spécifiée
-    env_file:
-      - .docker/.env.database
     ports:
       - "${DB_PORT:-3306}:3306" # Mappe le port de base de données de l'hôte vers le port 3306 du conteneur
     volumes:
@@ -243,13 +227,11 @@ variables d'environnement.
 ````yaml
 phpmyadmin:
     image: phpmyadmin/phpmyadmin # Image Docker officielle de phpMyAdmin
-    env_file:
-      - .docker/.env.database
     depends_on:
       mariadb:
         condition: service_healthy # S'assure que MariaDB démarre avant phpMyAdmin
     ports:
-      - "${PHPMYADMIN_PORT:-80}:80" # Mappe le port de phpMyAdmin de l'hôte vers le port 80 du conteneur
+      - "${PHPMYADMIN_PORT:-8080}:80" # Mappe le port de phpMyAdmin de l'hôte vers le port 80 du conteneur
     environment:
       - PMA_HOST=mariadb # Nom d'hôte du serveur MySQL/MariaDB à administrer
       - MYSQL_USER=${DB_USER:-db} # Nom d'utilisateur par défaut pour la connexion
@@ -263,8 +245,6 @@ phpmyadmin:
 ````yaml
 redis:
     image: redis:7-alpine # Image Docker Redis légère (Alpine)
-    env_file:
-      - .docker/.env.docker
     ports:
       - "${REDIS_PORT:-6379}:6379" # Mappe le port Redis de l'hôte vers le port 6379 du conteneur
     volumes:
@@ -283,8 +263,6 @@ redis:
 ````yaml
 mailhog:
     image: mailhog/mailhog # Image Docker pour intercepter et afficher les emails en développement
-    env_file:
-      - .docker/.env.docker
     ports:
       - "${MAILHOG_SMTP_PORT:-1025}:1025" # Port SMTP pour l'envoi de mails
       - "${MAILHOG_UI_PORT:-8025}:8025" # Port pour l'interface web de MailHog
@@ -330,8 +308,7 @@ Nous avons également configuré les volumes nécessaires pour assurer la persis
 Mais notre fichier ne peut pas être fonctionnel en l'état car nous faisons référence à de la configuration **PHP** et des
 variables d'environnement.
 
-Nous devons donc compléter notre configuration avec trois fichiers essentiels :
-- `.docker/php/php.example.ini` pour définir les valeurs par défaut de la configuration **PHP**.
-- `.docker/.example.env.database` pour définir les valeurs par défaut des variables d'environnement de la base de données.
-- `.docker/.example.env.docker` pour définir les valeurs par défaut des variables d'environnement pour la configuration 
-de Docker.
+Nous devons donc compléter notre configuration avec deux fichiers essentiels :
+- `.docker/.env.example` pour définir les valeurs par défaut des variables d'environnement de Docker.
+- `.docker/php/php.ini.example` pour définir les valeurs par défaut de la configuration **PHP**.
+

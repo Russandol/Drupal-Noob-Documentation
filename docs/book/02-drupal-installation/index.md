@@ -1,1 +1,4 @@
-TODO écrire une présentation de toute cette section
+# Introduction - Insallation et initialisation de Drupal
+
+Il est enfin temps de nous intéresser à **Drupal** !
+

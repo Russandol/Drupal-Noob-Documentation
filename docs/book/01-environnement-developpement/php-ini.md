@@ -1,11 +1,9 @@
-# Fichier de configuration PHP
-
-## php.example.ini
+# Fichier de configuration PHP - php.ini.example
 
 Tout comme pour les variables d'environnement, notre configuration du service `drupal` nous permet de surcharger la 
 configuration des variables d'environnement de **PHP** avec nos propres valeurs.
 
-A la racine du projet créer un fichier *.docker/php/php.example.ini* et ajoutez le contenu suivant : 
+A la racine du projet créer un fichier *.docker/php/php.ini.example* et ajoutez le contenu suivant : 
 
 ```ini
 [PHP]

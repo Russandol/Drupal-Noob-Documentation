@@ -1,24 +1,24 @@
-# Drupal - Makefile
+# Refactoring de Makefile
 
-Durant l'étape d'installation, nous avons utilisé plusieurs commandes pour installer Drupal. Comme l'objectif de
-cette formation est de mettre en place un projet type pour des sites Drupal, nous allons utiliser Make pour
+Durant l'étape d'installation, nous avons utilisé plusieurs commandes pour installer **Drupal**. Comme l'objectif de
+cette formation est de mettre en place un projet type pour des sites **Drupal**, nous allons utiliser **Make** pour
 automatiser l'installation.
 
-Ainsi, une simple commande suffira pour installer Drupal.
+Ainsi, une simple commande suffira pour installer **Drupal**.
 
 ## Refactoring
 
 ### Création des fichiers Makefile
 
-Actuellement, nous avons un fichier `Makefile` qui contient les commandes Docker. Nous pourrions tout simplement ajouter
-nos commandes Drupal dans ce fichier. Mais à force, notre fichier `Makefile` risque de devenir trop long et complexe.
+Actuellement, nous avons un fichier *Makefile* qui contient les commandes **Docker**. Nous pourrions tout simplement ajouter
+nos commandes **Drupal** dans ce fichier. Mais à force, notre fichier *Makefile* risque de devenir trop long et complexe.
 
-Je vous propose donc de créer des fichiers `Makefile` pour chaque contexte.
+Je vous propose donc de créer des fichiers *Makefile* pour chaque contexte.
 
-A la racine du projet, créez un dossier `make`. Dans ce dossier, créez les fichiers `docker.mk` et `drupal.mk` puis
-couper / coller tout le contenu de votre `Makefile` dans `docker.mk`. `Makefile` est maintenant vide.
+A la racine du projet, créez un dossier *make*. Dans ce dossier, créez les fichiers *docker.mk* et *drupal.mk* puis
+couper / coller tout le contenu de votre *Makefile* dans *docker.mk*. *Makefile* est maintenant vide.
 
-Nous pouvons maintenant mettre à jour le fichier `Makefile` pour qu'il importe les fichiers `docker.mk` et `drupal.mk`.
+Nous pouvons maintenant mettre à jour le fichier *Makefile* pour qu'il importe les fichiers *docker.mk* et *drupal.mk*.
 
 ```makefile
 # Include make files
@@ -28,16 +28,16 @@ include make/drupal.mk
 
 ### La commande help
 
-En l'état, la commande `help` est déclarée dans le fichier `docker.mk`. Nous aurons bien évidemment besoin d'une commande
-`help` pour décrire les commandes Drupal.
+En l'état, la commande `help` est déclarée dans le fichier *docker.mk*. Nous aurons bien évidemment besoin d'une commande
+`help` pour décrire les commandes **Drupal**.
 
-Mais si on crée une commande `help` dans le fichier `drupal.mk`, cette dernière écrase la commande `help` du fichier
-`docker.mk`.
+Mais si on crée une commande `help` dans le fichier *drupal.mk*, cette dernière écrase la commande `help` du fichier
+*docker.mk*.
 
 Pour éviter ce problème, nous allons tout simplement déclarer des variables qui contiendront les textes des commandes
-`help`. Puis générer la commande `help` dans le fichier `Makefile` en utilisant ces variables.
+`help`. Puis générer la commande `help` dans le fichier *Makefile* en utilisant ces variables.
 
-Dans le fichier `Makefile`, ajoutez le texte suivant :
+Dans le fichier *Makefile*, ajoutez le texte suivant :
 
 ```makefile
 # Define default target
@@ -69,16 +69,16 @@ Nous avons également prévenu les conflits avec `.PHONY`.
 
 Et avez-vous remarqué `.DEFAULT_GOAL := help` ?
 
-Comme la première chose que fait notre fichier `Makefile` est de charger le fichier `make/docker.mk`, la commande
+Comme la première chose que fait notre fichier *Makefile* est d'importer le fichier *make/docker.mk*, la commande
 par défaut sera la première commande de ce fichier. Pour le moment, c'est bien la méthode `help`, mais comme nous allons
 la transformer en variable, à chaque fois que vous taperez la commande `make` vous verrez la première commande de
-`make/docker.mk` qui sera `init`.
+make/docker.mk qui sera `init`.
 
 Pour éviter ça, nous utilisons la directive `.DEFAULT_GOAL` pour préciser quelle est la commande par défaut.
 
-Il est temps maintenant de remplacer la commande `help` du fichier `docker.mk` par une variable `DRUPAL_HELP_TEXT`.
+Il est temps maintenant de remplacer la commande `help` du fichier docker.mk par une variable `DRUPAL_HELP_TEXT`.
 
-Dans le fichier `docker.mk`, remplacez le code suivant :
+Dans le fichier docker.mk, remplacez le code suivant :
 
 ```makefile
 # Prevents conflicts if files with the same name exist
@@ -130,20 +130,20 @@ variable `DOCKER_HELP_TEXT` qui contient le texte de la commande `help`.
 
 Par convention, nous avons positionné la variable en haut du fichier (avant la directive `.PHONY` et les commandes).
 
-Tout est presque prêt pour les commandes Drupal, il nous reste un dernier détail.
+Tout est presque prêt pour les commandes **Drupal**, il nous reste un dernier détail.
 
 ### Variables globales
 
-Pour effectuer l'installation de Drupal, nous avons besoin de nous connecter en shell pour ensuite exécuter les commandes
-`drush`.
+Pour effectuer l'installation de **Drupal**, nous avons besoin de nous connecter en shell pour ensuite exécuter des commandes
+dans le conteneur.
 
 Nous allons donc devoir répéter à plusieurs reprises la commande
 `@docker compose exec -u application drupal bash`.
 
-Pour faciliter la maintenabilité, nous allons déclarer nos variables de manière globale dans le fichier `Makefile` et
+Pour faciliter la maintenabilité, nous allons déclarer nos variables de manière globale dans le fichier *Makefile* et
 préciser les dépendances dans les sous fichiers.
 
-Dans le fichier `Makefile`, ajoutez les variables suivantes :
+Dans le fichier *Makefile*, ajoutez les variables suivantes :
 
 ```makefile
 # Define default target
@@ -160,7 +160,7 @@ include make/drupal.mk
 #.. reste du fichier
 ```
 
-Et dans le fichier `make/docker.mk`, faites les modifications suivantes :
+Et dans le fichier *make/docker.mk*, faites les modifications suivantes :
 
 ```makefile
 # Ajoutez tout en haut du fichier les dépendances aux variables globales
@@ -173,11 +173,11 @@ shell:
 	@$(DOCKER_EXEC) bash
 ```
 
-Notre refactoring est terminé, tout est enfin prêt pour le fichier `make/drupal.mk`.
+Notre refactoring est terminé, tout est enfin prêt pour le fichier *make/drupal.mk*.
 
 ## Drupal.mk
 
-Dans le fichier `make/drupal.mk` ajoutez le code suivant :
+Dans le fichier *make/drupal.mk* ajoutez le code suivant :
 
 ```makefile
 # Dependencies: Requires DOCKER_EXEC variables from main Makefile
@@ -201,7 +201,7 @@ drupal-install:
 	@echo "✅ Drupal has been successfully installed"
 ```
 
-Et voilà, nous avons ajouté une commande `drupal-install` et revu le fonctionnement de notre Makefile pour qu'il
+Et voilà, nous avons ajouté une commande `drupal-install` et revu le fonctionnement de notre *Makefile* pour qu'il
 puisse être facilement réutilisé et maintenu.
 
 Il ne reste plus qu'une dernière étape à accomplir avant de continuer la configuration de notre site Drupal.

@@ -59,4 +59,10 @@ Installation de Drupal et outils de développement
 - Installation du français
 - Créer une recipes pour l'installation de base.
 
+Penser à parler des commandes Drush generate
+
 Drupal module
+
+paragraph
+    -> attention lors d'utilisation d'un champ paragraphe == plus possible de faire de la duplication. modifier le
+champ reviens à changer sur toutes les duplications.
