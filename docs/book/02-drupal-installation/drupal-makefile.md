@@ -97,9 +97,9 @@ help:
   @echo "  make shell          - Accéder à un terminal à l'intérieur du conteneur avec l'utilisateur 'application'"
   @echo "  make prod-build     - Construit les images Docker (prod)"
   @echo "  make prod           - Démarre l'environnement de production"
-	@echo "  make prod-down      - Arrête l'environnement de production"
-	@echo "  make prod-status    - Affiche l'état des conteneurs de production"
-	@echo "  make prod-logs      - Affiche les logs de production en temps réel"
+  @echo "  make prod-down      - Arrête l'environnement de production"
+  @echo "  make prod-status    - Affiche l'état des conteneurs de production"
+  @echo "  make prod-logs      - Affiche les logs de production en temps réel"
 ```
 
 Par :

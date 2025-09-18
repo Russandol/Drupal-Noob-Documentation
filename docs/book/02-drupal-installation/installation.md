@@ -3,7 +3,7 @@
 ## Présentation de Composer
 
 **Composer** est le gestionnaire de dépendances standard de **PHP**, similaire à **npm** pour **JavaScript** ou **pip** pour **Python**.
-Il permet de télécharger et installer automatiquement les bibliothèques et frameworks **PHP* nécessaires à notre projet,
+Il permet de télécharger et installer automatiquement les bibliothèques et frameworks **PHP** nécessaires à notre projet,
 en gérant leurs versions et leurs interdépendances.
 
 Dans le contexte de Drupal, **Composer** facilite grandement l'installation du core, des modules contributifs et des
@@ -74,13 +74,9 @@ Next steps:
     * chat: https://www.drupal.org/node/314178
 ```
 
-Parmi les liens utiles vers la documentation, on nous conseille de supprimer le module qui affiche ce message. Ce module
-n'étant plus utile, nous pouvons en effet le supprimer.
+Parmi les liens utiles vers la documentation, on nous conseille de supprimer le module qui affiche ce message. 
 
-Nous allons donc jouer la commande suivante :
-```shell
-composer remove drupal/core-project-message
-```
+Mais avant de pouvoir supprimer le module, nous devons déplacer les dossiers et fichiers qui viennent d'être installés.
 
 Par mesure de sécurité et afin d'éviter d'écraser des données existantes, **Composer** n'accepte pas d'installer un projet
 dans un répertoire qui contient déjà des fichiers. C'est pour cette raison que nous effectuons l'installation dans un
@@ -92,6 +88,11 @@ suivante :
 ```shell
 rsync -a drupal-temp/ ./
 rm -rf drupal-temp/
+```
+
+Une fois les dossiers et fichiers transférés, nous pouvons supprimer le module temporaire avec la commande suivante :
+```shell
+composer remove drupal/core-project-message
 ```
 
 Et voilà, l'installation de Drupal est terminée !
@@ -112,19 +113,19 @@ Pour finaliser cette installation, **Drupal** propose une interface graphique. S
 ![Initialisation de Drupal - Choisir la langue](images/drupal-01-installation-01.jpg)
 *Initialisation de Drupal - Choisir la langue*
 
-Ce premier écran de l'initialisation de Drupal vous propose de sélectionner la langue, avec le français sélectionné par
+Ce premier écran de l'initialisation de **Drupal** vous propose de sélectionner la langue, avec le français sélectionné par
 défaut.
 
-Bien qu'il soit tentant d'installer directement Drupal dans sa langue natale, je recommande de procéder à
+Bien qu'il soit tentant d'installer directement **Drupal** dans sa langue natale, je recommande de procéder à
 l'installation initiale en anglais. Il est bien entendu possible de télécharger des packs de langues par la suite.
 
 Les raisons sont :
 - **Traductions incomplètes** : certains textes peuvent rester en anglais si les traductions ne sont pas à 100%.
 - **Modules contribués** : beaucoup n'ont pas de traductions françaises disponibles immédiatement.
-- **Formation simplifiée** : de nombreux tutos sont en anglais, il sera plus simple avec une interface identique.
+- **Formation simplifiée** : de nombreux tutos sont en anglais, il sera plus simple de suivre ces tutos avec une interface identique.
 - **Debug plus simple** : les messages d'erreurs seront en anglais ce qui facilite la recherche sur **Google** ou la documentation.
 
-Il n'y a pas vraiment de risque ou de problème à charger une autre langue que l'anglais. Je trouve juste celà plus pratique.
+Il n'y a pas vraiment de risque ou de problème à charger une autre langue que l'anglais. Je trouve juste cela plus pratique.
 
 Je vous invite donc à choisir "English" dans la liste et de valider le formulaire en cliquant sur le bouton "Save and continue".
 
@@ -220,4 +221,4 @@ Votre site **Drupal** est désormais installé et initialisé... et qu'est-ce qu
 Mais ne vous inquiétez pas, c'est tout à fait normal. N'oubliez pas que nous avons effectué une installation minimale.
 Nous n'avons donc pas de contenu, ni de templates, ni de modules, etc..
 
-Et avant de nous occuper de tout ça faisons un point sur cette installation.
+Avant de nous occuper de tout ça faisons un point sur cette installation.

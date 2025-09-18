@@ -50,45 +50,61 @@ Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit
     ```
 
     📁 Cloner le projet Git :
-    ```bash
+    ```shell
     git clone [url-du-projet]
     cd [nom-du-projet]
     ```
 
     📋 Initialiser les fichiers de configuration et d'environnement :
-    ```bash
+    ```shell
     make init
     ```
 
-    Si nécessaire, effectuer les modifications dans les fichiers `.docker/.env.database`, `.docker/.env.database`
-    et `.docker/php/php.ini`.
+    Si nécessaire, effectuer les modifications dans les fichiers `.docker/.env`, et `.docker/php/php.ini`.
 
     🐳 Construire les images Docker
-    ```bash
+    ```shell
     make build
     ```
 
     🐳 Démarrer l'environnement de développement Docker
-    ```bash
+    ```shell
     make dev
     ```
 
     📁 Ouvrir en tant qu'administrateur le fichier `C:\Windows\System32\drivers\etc\hosts` et ajouter la ligne :
-    ```bash
+    ```shell
     127.0.0.1    drupal-project.test
     ```
 
     🔨 Installer Drupal et ses dépendances
-    ```bash
+    ```shell
     make drupal-install
+    ```
+
+    ✅ Authoriser les modifications des fichiers settings
+    ```shell
+    chmod u+w web/sites/default
+    chmod u+w web/sites/default/settings.php
+    ```
+
+    📝 Créer les fichiers 'settings.local.php' et 'local.services.yml'
+    ```shell
+    cp web/sites/example.settings.local.php web/sites/default/settings.local.php
+    cp web/sites/default/default.services.yml web/sites/default/local.services.yml
+    ```
+
+    ✅ Retirer les droits de modifications des fichiers settings
+    ```shell
+    chmod u-w web/sites/default
+    chmod u-w web/sites/default/settings.php
     ```
 
     ## 🔧 Configuration
 
     ### Fichiers de configuration
 
-    - Variables d'environnement Docker `.docker/.env.docker`
-    - Variables d'environnement de base de données `.docker/.env.database`
+    - Variables d'environnement Docker `.docker/.env`
     - Configuration PHP `.docker/php/php.ini`
     - Services Docker de développement `compose.yml`
     - Services Docker de production `compose-prod.yml`
@@ -137,8 +153,9 @@ Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit
     ├── recipes/
     ├── vendor/
     ├── web/
-    │   ├── sites/default
+    │   ├── core
     │   ├── modules
+    │   ├── sites
     │   └── themes
     ├── .dockerignore
     ├── .gitignore
@@ -153,6 +170,6 @@ Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit
 
 Les modifications que nous avons effectuées :
 - Ajout de la version de **Drupal** dans la `Stack technique`.
-- Modification des étapes d'installation pour inclure l'installation de **Drupal**.
+- Modification des étapes d'installation pour inclure l'installation de **Drupal** et la création des fichiers de configuration.
 - Ajout de la section `Commandes Drupal disponibles`.
 - Modification de la section `Structure du projet` pour inclure le dossier `make` et la structure de dossiers de Drupal.

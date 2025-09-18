@@ -1,53 +1,4 @@
-# Drupal - Premiers modules et settings
-
-Après avoir réalisé l'installation initiale de **Drupal**, il est essentiel de procéder à certaines configurations pour
-optimiser notre environnement. Cette étape cruciale nécessite des modifications dans les fichiers de configurations.
-
-Cependant, avant de procéder à ces modifications, nous allons d'abord installer un module indispensable : **Drush**.
-
-## Premier module
-
-### Description
-
-Un module **Drupal** est un ensemble de fichiers **PHP** qui étend les fonctionnalités de base, en ajoutant de
-nouvelles capacités comme des types de contenu, des formulaires ou des intégrations avec des services externes.
-Les modules suivent une structure standardisée avec des fichiers de configuration, des hooks et des services qui
-permettent de s'intégrer parfaitement dans l'architecture de **Drupal**.
-
-Les caractéristiques d'un module sont :
-- **Chaque module est indépendant** et peut fonctionner seul ou en intéraction avec d'autres.
-- Un module peut être utilisé sur **différents sites** **Drupal**.
-- Un module peut proposer des **options de configuration**.
-- Un module peut **étendre le cœur** de **Drupal** et peut lui-même être étendus par d'autres modules.
-
-[La documentation de Drupal](https://www.drupal.org/project/project_module) référence et propose un outil de recherche de modules.
-
-Les modules s'installent avec **Composer** et se trouvent dans le dossier *web/modules/contrib*.
-
-### Drush
-
-**[Drush](https://www.drupal.org/docs/develop/development-tools/drush)** est un outil en ligne de commande incontournable.
-Il propose de nombreuses lignes de commandes pour automatiser des tâches courantes. Il permet par exemple la gestion
-simplifiée des modules et des thèmes, la gestion des caches, etc..
-
-Certains modules implémentent même des commandes **Drush** pour simplifier leur utilisation.
-
-Pour installer **Drush**, tapez la commande suivante :
-```shell
-composer require drush/drush
-```
-
-> ⚠️ Il est bien entendu nécessaire d'être connecté au conteneur Docker pour accéder à **Composer**. Pour ça il vous suffit
-> d'utiliser notre commande `make shell`.
-
-Une fois l'installation terminée, vous pouvez tester en tapant tout simplement `drush` dans votre terminal. La commande
-doit afficher une liste de commandes disponibles.
-
-Normalement, cette commande `drush` n'est disponible qu'en tapant `vendor\bin\drush` mais souvenez-vous, lors de la
-configuration de **Docker**, dans le fichier *Dockerfile*, nous avons ajouté le dossier `vendor\bin` dans le *PATH* de notre
-environnement. Taper `drush` revient à taper `vendor\bin\drush`.
-
-## Les fichiers settings
+# Les fichiers settings
 
 Les fichiers "settings" sont le point d'ancrage de la configuration de **Drupal**. Ils relient le code du CMS à notre
 environnement concret (base de données, secrets, caches) sans modifier le cœur ni les modules.
@@ -75,7 +26,7 @@ La structure des fichiers est la suivante :
 │       └── exemple.sites.php   
 ```
 
-### settings.php
+## settings.php
 
 Le fichier qui nous intéresse pour le moment est le fichier *web/sites/default/settings.php*. C'est LE fichier de configuration
 actif. C'est dans ce fichier par exemple que sont définies les configurations de connexion à la base de données.
@@ -103,7 +54,7 @@ que nous avons renseigné dans le formulaire et a automatiquement rempli le fich
 Et là, je pense que vous avez tout de suite remarqué un problème : les identifiants de la base de données sont en clair
 dans le fichier.
 
-Lors de la configuration de notre environnement de développement, nous avons créé un fichier *.docker/.env.database* qui 
+Lors de la configuration de notre environnement de développement, nous avons créé un fichier *.docker/.env* qui 
 contient les identifiants. Mais nous ne pouvons pas utiliser ce fichier en l'état dans notre projet car **Drupal** ne
 prend pas en compte nativement les variables d'environnement.
 
@@ -231,7 +182,7 @@ DB_DRIVER=
 DB_PREFIX=
 ```
 
-Ces valeurs sont gérées par notre fichier *.docker/.env.database*.
+Ces valeurs sont gérées par notre fichier *.docker/.env*.
 
 Idem pour le fichier *.env*, vous pouvez supprimer ces lignes : 
 ```dotenv
@@ -244,11 +195,9 @@ DB_DRIVER=mysql
 DB_PREFIX=
 ```
 
-[//]: # (TODO expliquer que l'on peut utiliser les variables d'environnement déjà créé pour Docker)
-
 Pour que **Drupal** prenne en compte les variables d'environnement, le module **Dotenv** a ajouté un script de chargement
 automatique dans le fichier *load.environment.php*. Nous allons ajouter du code pour qu'il prenne aussi en compte le fichier
-d'environnement *.docker/.env.database*.
+d'environnement *.docker/.env*.
 
 Ouvrez le fichier *load.environment.php* et ajoutez le code suivant : 
 ```php
@@ -264,7 +213,7 @@ use Symfony\Component\Dotenv\Dotenv;
 (new Dotenv())->usePutenv()->bootEnv(DRUPAL_ROOT . '/../.env', 'dev', ['test'], TRUE);
 
 // Ajout de notre fichier, "overload" permet de remplacer les variables existantes.
-(new Dotenv())->usePutenv()->overload(DRUPAL_ROOT . '/../.docker/.env.database');
+(new Dotenv())->usePutenv()->overload(DRUPAL_ROOT . '/../.docker/.env');
 
 ```
 
@@ -335,12 +284,43 @@ $databases['default']['default'] = array (
 );
 ```
 
-Et voilà, nous avons adapté notre configuration de **Drupal** à notre environnement.
+### Hash salt
+
+Le *hash salt* est une chaîne aléatoire unique utilisée par **Drupal** pour renforcer la sécurité des hachages et des jetons.
+Il garantit que les mêmes données produisent des hachages différents d’un site à l’autre.
+
+Lors de l'installation d'un projet **Drupal**, un *hash salt* est généré automatiquement et ajouté dans le fichier 
+*settings.php*.
+
+```php
+$settings['hash_salt'] = 'xxx'; // xxx étant la chaîne de caractère.
+```
+
+Comme vous vous en doutez : cette valeur est sensible et doit être différente en fonction des environnements.
+
+Nous allons donc l'ajouter dans nos variables d'environnement.
+
+Pour commencer, ajoutez cette ligne dans les fichiers *.env* et *.env.example* :
+
+```dotenv
+HASH_SALT=
+```
+
+Puis, copiez la valeur du *hash salt* du fichier *settings.php* dans le fichier *.env*.
+
+Enfin, dans le fichier *settings.php*, modifiez le code suivant :
+
+```php
+$settings['hash_salt'] = getenv('HASH_SALT');
+```
+
+Et voilà, nous avons adapté notre configuration de **Drupal** à notre environnement. Et surtout nous avons utilisé
+des variables d'environnement pour protéger les données sensibles.
 Si vous actualisez le site sur le navigateur, tout devrait continuer à fonctionner.
 
 Mais nous n'en avons pas fini avec les fichiers de configuration pour autant !
 
-### settings.local
+## settings.local
 
 Nous avons défini une configuration globale de notre projet. Nous pouvons également préciser des configurations
 qui ne seront disponibles que pour notre environnement local de développement.
@@ -353,7 +333,8 @@ Dans le terminal, toujours connecté au conteneur en shell, tapez la commande su
 cp web/sites/example.settings.local.php web/sites/default/settings.local.php
 ```
 
-Cette commande copie le fichier *example.settings.local.php* qui est un exemple de configuration locale.
+Cette commande copie le fichier *example.settings.local.php*, qui est un exemple de configuration locale, et le nomme
+*settings.local.php*.
 
 Ensuite, dans le fichier *settings.php*, décommentez les lignes suivantes (souvent en fin de fichier) :
 ```php
@@ -367,7 +348,7 @@ Ce script vérifie s'il existe un fichier *settings.local.php* dans le dossier *
 Pour le moment, nous n'allons pas modifier la configuration en local, mais au moins le fichier sera disponible au 
 besoin.
 
-### local.services
+## local.services
 
 Le fichier *local.services.yml* est une surcharge locale du conteneur de services de Drupal, utilisée en développement 
 pour ajuster des services et paramètres sans toucher la config globale. Il permet notamment d’activer le debug (ex. Twig), 
@@ -394,7 +375,7 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/local.services
 > ⚠️ Il est possible que votre IDE émette une erreur sur les variables `$app_root` et `$site_path` car ces deux
 > variables ne sont pas créées dans le fichier *settings.php*. Vous pouvez ignorer cette erreur.
 
-### Protéger les fichiers settings
+## Protéger les fichiers settings
 
 Nous avons terminé d'ajouter / modifier des fichiers settings. Il est important maintenant de retirer 
 les droits en écriture sur le fichier *settings.php* et le dossier parent.

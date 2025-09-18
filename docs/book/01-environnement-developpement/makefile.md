@@ -131,7 +131,7 @@ help:
     @echo "  make init      - Initialise les fichiers d'environnement"
 
 init:
-	@if [ ! -f .docker/.env.database ]; then \
+	@if [ ! -f .docker/.env.example ]; then \
   		cp .docker/.env.example .docker/.env; \
   		echo "✅ File .docker/.env created from example"; \
   	else \
@@ -176,7 +176,7 @@ help:
 # Code à ajouter à la fin du fichier
 build: init
 	@echo "🔨 Building Docker images for development..."
-	@docker compose build --env_file $(ENV_FILE) --no-cache
+	@docker compose --env-file $(ENV_FILE) build --no-cache
 	@echo "✅ Images built"
 ```
 
@@ -203,7 +203,7 @@ help:
 # Code à ajouter à la fin du fichier
 dev:
 	@echo "🚀 Starting development environment..."
-	@docker compose up --env_file $(ENV_FILE) -d
+	@docker compose --env-file $(ENV_FILE) up -d
 	@echo "✅ Development environment started"
 ```
 
@@ -339,12 +339,12 @@ help:
 # Code à ajouter à la fin du fichier
 prod-build: init
 	@echo "🔨 Rebuilding Docker images for production..."
-	@docker compose -f $(PROD_COMPOSE) --env_file $(ENV_FILE) build --no-cache
+	@docker compose -f $(PROD_COMPOSE) --env-file $(ENV_FILE) build --no-cache
 	@echo "✅ Images rebuilt"
 
 prod:
 	@echo "🚀 Starting production environment..."
-	@docker compose -f $(PROD_COMPOSE) --env_file $(ENV_FILE) up -d
+	@docker compose -f $(PROD_COMPOSE) --env-file $(ENV_FILE) up -d
 	@echo "✅ Production environment started"
 
 prod-down:
@@ -361,5 +361,4 @@ prod-logs:
 	@docker compose -f $(PROD_COMPOSE) logs -f
 ```
 
-Toutes nos commandes sont prêtes ! Je suis sûr que vous avez hâte de les tester. Mais avant ça, nous avons une dernière
-chose à faire...
+Toutes nos commandes sont prêtes ! Nous pouvons maintenant passer à la configuration de **Drupal**.

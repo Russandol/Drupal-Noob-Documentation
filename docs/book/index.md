@@ -21,4 +21,9 @@ features:
     title: Installation de Drupal 11
     details: Installer Drupal 11 avec Composer et initialiser le projet
     link: /02-drupal-installation/
+
+  - icon: 🛠️
+    title: Aide mémoire
+    details: Aide-mémoire regroupant conseils, rappels et solutions rapides aux problèmes courants.
+    link: /00-cheat-sheet/
 ---
