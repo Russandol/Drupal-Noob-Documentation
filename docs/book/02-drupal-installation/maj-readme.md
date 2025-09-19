@@ -1,7 +1,11 @@
 # Mise à jour du fichier README.md
 
-Maintenant que nous avons modifié notre projet en installant Drupal et revu le fonctionnement de Make, il est temps
-de mettre à jour le fichier *README.md*.
+Félicitation, notre projet **Drupal** est installé et bien configuré.
+
+Nous allons pouvoir enfin mettre un peu les mains dans cambouis et découvre le monde merveilleux de **Drupal**.
+
+Mais avant ça, comme nous avons fait beaucoup de modification dans notre projet, il est temps de mettre à jour notre
+fichier *README.md*.
 
 Je sais que la documentation est une étape barbante dans la vie d'un projet. Mais c'est une étape essentielle pour la
 maintenabilité. Dites-vous que chaque minute investie dans un bon README vous fera économiser des heures de support et

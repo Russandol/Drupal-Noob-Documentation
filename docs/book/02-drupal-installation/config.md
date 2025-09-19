@@ -51,7 +51,86 @@ efficacement ces fichiers de configuration.
 
 ## Gérer les fichiers .yml de configuration
 
+Notre fichier *web/sites/default/settings.php* précise déjà dans quel dossier les fichiers de configurations seront 
+enregistrés : 
 
-- mettre à jour settings pour définir un dossier à la racine pour les configurations
-- penser à supprimer ensuite le dossier d'origine
-- les commandes Drush d'imports / exports de configuration
+```php
+$settings['config_sync_directory'] = 'sites/default/files/config_'
+```
+
+Mais ce n'est pas une bonne pratique car tout ce qui se trouve dans le dossier *web/sites/default/files* est ignoré par 
+**Git**. (Nous l'avons ajouté à notre *.gitignore*).
+
+Je trouve plus logique et pratique que les fichiers de configuration soient désolidarisés du dossier *web*.
+
+A la racine du projet, créez les dossiers *config/default* :
+```shell
+mkdir -p config/default
+```
+
+Accordez les droits d'écriture au fichier *settings.php* :
+```shell
+chmod u+w web/sites/default
+chmod u+w web/sites/default/settings.php
+```
+
+Et supprimez du fichier *settings.php* la ligne : 
+```php
+$settings['config_sync_directory'] = 'sites/default/files/config_'
+```
+
+Tout comme pour *Redis*, je vous propose de créer un fichier settings spécifique à la gestion de la configuration :
+```shell
+touch web/sites/default/settings/config.php
+```
+
+Enfin, vous pouvez y ajouter le code suivant :
+```php
+// Define the config sync folder
+$settings['config_sync_directory'] = '../config/default';
+```
+
+> ⚠️ Par défaut, les fichiers settings sont dans le dossier *web*, il faut donc revenir en arrière dans l'arborescence
+> pour trouver notre dossier *config*.
+
+Nous pouvons maintenant supprimer le dossier de configuration d'origine.
+
+## Exporter la configuration actuelle
+
+Depuis le début de ce chapitre, nous évoquons la possibilité d'exporter la configuration de notre site.
+
+> ❓ Mais on fait ça comment ?
+
+Avec **Drush** tout simplement !
+
+Connectez-vous en shell au conteneur `drupal` :
+```shell
+make shell
+```
+
+Nous allons d'abord utiliser la commande **Drush** qui permet de supprimer le cache pour que nos dernières modifications
+soient prises en compte.
+```shell
+drush cr
+```
+
+Puis nous allons utiliser la commande qui permet d'exporter la configuration : 
+```shell
+drush cex
+```
+
+> `drush cex` est l'alias de la commande `drush config:export`.
+
+Le terminal devrait afficher le message suivant : 
+```shell
+[success] Configuration successfully exported to ../config/default.
+```
+
+Et si vous regardez dans le dossier *config/default*, vous devriez trouver un grand nombre de fichiers *.yml*.
+
+Nous n'allons pas les analyser un par un. Mais parmi eux il est intéressant de citer *config/default/system.site.yml*
+qui contient les informations de notre site. On y retrouve d'ailleurs le nom de notre site ainsi que l'adresse mail que nous
+avons indiqué lors de l'installation dans l'interface d'installation web.
+
+Un autre fichier intéressant est *config/default/core.extension.yml*. Il référence tous les modules initialisés. Nous 
+pouvons voir `dotenv` et `redis` dans la liste.
