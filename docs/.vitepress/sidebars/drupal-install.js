@@ -10,13 +10,13 @@ export default {
     { text: 'Premier module : Drush', link: '/02-drupal-installation/drush' },
     { text: 'Fichiers settings', link: '/02-drupal-installation/settings-files' },
     { text: 'Mise à jour .gitignore', link: '/02-drupal-installation/maj-gitignore' },
+    { text: 'Le cache avec Redis', link: '/02-drupal-installation/redis' },
 
     { text: 'Mise à jour Readme', link: '/02-drupal-installation/maj-readme' },
 
     { text: 'les fichiers de configuration', link: '/02-drupal-installation/config' },
 
-    { text: 'Le cache avec Redis', link: '/02-drupal-installation/redis' },
 
-    { text: 'Configurer XDebug', link: '/02-drupal-installation/xdebug' },
+
   ]
 }

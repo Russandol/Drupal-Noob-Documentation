@@ -151,7 +151,8 @@ Dans le fichier *Makefile*, ajoutez les variables suivantes :
 
 # Docker variables
 PROD_COMPOSE = compose-prod.yml
-DOCKER_EXEC = docker compose exec -u application drupal
+DOCKER_EXEC = docker compose exec
+DOCKER_EXEC_DRUPAL = $(DOCKER_EXEC) -u application drupal
 
 # Include make files
 include make/docker.mk
@@ -164,13 +165,13 @@ Et dans le fichier *make/docker.mk*, faites les modifications suivantes :
 
 ```makefile
 # Ajoutez tout en haut du fichier les dépendances aux variables globales
-# Dependencies: Requires PROD_COMPOSE and DOCKER_EXEC variables from main Makefile
+# Dependencies: Requires PROD_COMPOSE and DOCKER_EXEC_DRUPAL variables from main Makefile
 
 # Supprimez les variables
 
 # Simplifiez la commande shell
 shell:
-	@$(DOCKER_EXEC) bash
+	@$(DOCKER_EXEC_DRUPAL) bash
 ```
 
 Notre refactoring est terminé, tout est enfin prêt pour le fichier *make/drupal.mk*.
@@ -180,7 +181,7 @@ Notre refactoring est terminé, tout est enfin prêt pour le fichier *make/drupa
 Dans le fichier *make/drupal.mk* ajoutez le code suivant :
 
 ```makefile
-# Dependencies: Requires DOCKER_EXEC variables from main Makefile
+# Dependencies: Requires DOCKER_EXEC_DRUPAL variables from main Makefile
 
 # Help messages
 DRUPAL_HELP_TEXT = "\
@@ -191,13 +192,13 @@ DRUPAL_HELP_TEXT = "\
 
 drupal-install:
 	@echo "📦 Downloading Drupal via Composer..."
-	@$(DOCKER_EXEC) composer create-project drupal/recommended-project drupal-temp
+	@$(DOCKER_EXEC_DRUPAL) composer create-project drupal/recommended-project drupal-temp
 	@echo "🔄 Copying Drupal files..."
-	@$(DOCKER_EXEC) rsync -a drupal-temp/ ./
+	@$(DOCKER_EXEC_DRUPAL) rsync -a drupal-temp/ ./
     @echo "🧹 Remove core-project-message module..."
-	@$(DOCKER_EXEC) composer remove drupal/core-project-message
+	@$(DOCKER_EXEC_DRUPAL) composer remove drupal/core-project-message
 	@echo "🧹 Cleaning temporary files..."
-	@$(DOCKER_EXEC) rm -rf drupal-temp/
+	@$(DOCKER_EXEC_DRUPAL) rm -rf drupal-temp/
 	@echo "✅ Drupal has been successfully installed"
 ```
 
