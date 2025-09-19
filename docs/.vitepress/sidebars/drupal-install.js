@@ -12,11 +12,10 @@ export default {
     { text: 'Mise à jour .gitignore', link: '/02-drupal-installation/maj-gitignore' },
     { text: 'Le cache avec Redis', link: '/02-drupal-installation/redis' },
 
-    { text: 'Mise à jour Readme', link: '/02-drupal-installation/maj-readme' },
-
     { text: 'les fichiers de configuration', link: '/02-drupal-installation/config' },
 
 
+    { text: 'Mise à jour Readme', link: '/02-drupal-installation/maj-readme' },
 
   ]
 }
