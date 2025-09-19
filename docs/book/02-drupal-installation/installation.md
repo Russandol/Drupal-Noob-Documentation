@@ -110,7 +110,7 @@ Pour finaliser cette installation, **Drupal** propose une interface graphique. S
 
 ### 1.Choose language
 
-![Initialisation de Drupal - Choisir la langue](images/drupal-01-installation-01.jpg)
+![Initialisation de Drupal - Choisir la langue](images/drupal-installation-01.jpg)
 *Initialisation de Drupal - Choisir la langue*
 
 Ce premier écran de l'initialisation de **Drupal** vous propose de sélectionner la langue, avec le français sélectionné par
@@ -131,7 +131,7 @@ Je vous invite donc à choisir "English" dans la liste et de valider le formulai
 
 ### 2.Choose profile
 
-![Initialisation de Drupal - Choisir le profil](images/drupal-01-installation-02.jpg)
+![Initialisation de Drupal - Choisir le profil](images/drupal-installation-02.jpg)
 *Initialisation de Drupal - Choisir le profil*
 
 Cet écran de l'initialisation nous propose de choisir quel profil d'installation nous souhaitons utiliser pour la configuration
@@ -163,7 +163,7 @@ Vous n'avez rien à faire durant cette étape. Elle est d'ailleurs automatiqueme
 
 ### 4.Set up database
 
-![Initialisation de Drupal - Configurer la base de données](images/drupal-01-installation-03.jpg)
+![Initialisation de Drupal - Configurer la base de données](images/drupal-installation-03.jpg)
 *Initialisation de Drupal - Configurer la base de données*
 
 Cette étape permet de configurer la base de données qui sera utilisée par **Drupal**.
@@ -201,7 +201,7 @@ Vous n'avez rien à faire durant cette étape. Elle est d'ailleurs automatiqueme
 
 ### 6.Configure site
 
-![Initialisation de Drupal - Configurer le site](images/drupal-01-installation-04.jpg)
+![Initialisation de Drupal - Configurer le site](images/drupal-installation-04.jpg)
 *Initialisation de Drupal - Configurer le site*
 
 Dernière étape de l'initialisation de notre projet Drupal.
@@ -213,7 +213,7 @@ Une fois les informations entrées, validez le formulaire en cliquant sur "Save 
 
 ## Félicitation
 
-![Initialisation de Drupal - Fin d'installation](images/drupal-01-installation-05.jpg)
+![Initialisation de Drupal - Fin d'installation](images/drupal-installation-05.jpg)
 *Initialisation de Drupal - Fin d'installation*
 
 Votre site **Drupal** est désormais installé et initialisé... et qu'est-ce qu'il est moche !

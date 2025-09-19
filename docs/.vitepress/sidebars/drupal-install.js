@@ -16,5 +16,7 @@ export default {
     { text: 'les fichiers de configuration', link: '/02-drupal-installation/config' },
 
     { text: 'Le cache avec Redis', link: '/02-drupal-installation/redis' },
+
+    { text: 'Configurer XDebug', link: '/02-drupal-installation/xdebug' },
   ]
 }
