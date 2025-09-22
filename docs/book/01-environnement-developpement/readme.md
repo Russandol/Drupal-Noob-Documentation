@@ -41,7 +41,7 @@ A la racine du projet, créez un fichier *README.md* avec le contenu suivant :
     - PHP 8.3
     - MariaDB 10.6+
     
-    ## ✅ Installation rapide
+    ## ✅ Installation
     
     Les lignes de commande suivantes doivent être effectuées dans l'interpréteur de commande Linux.
     
@@ -79,7 +79,7 @@ A la racine du projet, créez un fichier *README.md* avec le contenu suivant :
     make dev
     ```
     
-    🌐 Ouvrir en tant qu'administrateur le fichier `C:\Windows\System32\drivers\etc\hosts` et ajouter la ligne 
+    📁 Ouvrir en tant qu'administrateur le fichier `C:\Windows\System32\drivers\etc\hosts` et ajouter la ligne 
     (remplacer <drupal-project> par le nom du projet) :
     ```bash
     127.0.0.1    <drupal-project>.test

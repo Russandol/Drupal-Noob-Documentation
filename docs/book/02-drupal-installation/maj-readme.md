@@ -19,9 +19,9 @@ Prenons donc l'habitude de mettre le fichier *README.md* à jour régulièrement
 Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit :
 
 ```markdown
-# Drupal Noob
+    # Drupal Project
 
-    Drupal Noob est un template de projet Drupal 11.
+    Drupal Project est un template de projet Drupal 11.
 
     ## 📝 Prérequis
 
@@ -38,7 +38,7 @@ Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit
     - MariaDB 10.6+
     - Drupal 11.x
 
-    ## ✅ Installer un nouveau projet Drupal
+    ## ✅ Installation
 
     Les lignes de commande suivantes doivent être effectuées dans l'interpréteur de commande Linux.
 
@@ -76,14 +76,30 @@ Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit
     make dev
     ```
 
-    📁 Ouvrir en tant qu'administrateur le fichier `C:\Windows\System32\drivers\etc\hosts` et ajouter la ligne :
+    📁 Ouvrir en tant qu'administrateur le fichier `C:\Windows\System32\drivers\etc\hosts` et ajouter la ligne 
+    (remplacer <drupal-project> par le nom du projet) :
     ```shell
-    127.0.0.1    drupal-project.test
+    127.0.0.1    <drupal-project>.test
+    ```
+
+    📝 Copier le fichier `.env.example`
+    ```shell
+    cp .env.example .env
+    ```
+    
+    ⚙️ Générer un hash_salt et le copier dans fichier `.env`
+    ```shell
+    drush eval "var_dump(Drupal\Component\Utility\Crypt::randomBytesBase64(55))"
+    ```
+
+    🐳 Se connecter à Docker en shell
+    ```shell
+    make shell
     ```
 
     🔨 Installer Drupal et ses dépendances
     ```shell
-    make drupal-install
+    composer install
     ```
 
     ✅ Authoriser les modifications des fichiers settings
@@ -112,6 +128,7 @@ Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit
     - Configuration PHP `.docker/php/php.ini`
     - Services Docker de développement `compose.yml`
     - Services Docker de production `compose-prod.yml`
+    - Variables d'environnement globale `.env`
 
     ### Accès aux services
 
@@ -175,5 +192,7 @@ Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit
 Les modifications que nous avons effectuées :
 - Ajout de la version de **Drupal** dans la `Stack technique`.
 - Modification des étapes d'installation pour inclure l'installation de **Drupal** et la création des fichiers de configuration.
+- Vous constaterez que nous avons également précisé qu'il faut générer un hash_salt. Comme nous l'avons vu lors 
+de la configuration des settings.
 - Ajout de la section `Commandes Drupal disponibles`.
 - Modification de la section `Structure du projet` pour inclure le dossier `make` et la structure de dossiers de Drupal.
