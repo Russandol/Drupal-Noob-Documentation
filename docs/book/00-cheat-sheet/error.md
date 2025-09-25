@@ -26,3 +26,40 @@ use DependencySerializationTrait;
 ### Git is not installed: Cannot identify version of git executable: no response
 
 file -> Invalidate caches... -> Invalidate and restart
+
+### Configurer Git ssh dans le terminal de PHPStorm
+
+Générer une clef ssh: 
+```shell
+ssh-keygen -t ed25519 -C "maclef@gitlab" -f ~/.ssh/id_ed25519_maclef
+```
+
+Vérifier le remote dans le repo local : 
+```shell
+git remote -v
+```
+L'url doit correspondre à celle du ssh.
+
+Si non (remplacer <URL> par l'url du repo) : 
+```shell
+git remote set-url originer <URL>
+```
+
+Modifier le fichier .ssh/config : 
+```text
+Host gitlab-project
+  HostName gitlab.com
+  User git
+  IdentityFile ~/.ssh/id_ed25519_maclef
+  AddKeysToAgent yes
+```
+
+Tester la connexion : 
+```ssh
+ssh -T git@gitlab-project
+```
+
+Renvois : 
+```ssh
+Welcome to GitLab, @user
+```
