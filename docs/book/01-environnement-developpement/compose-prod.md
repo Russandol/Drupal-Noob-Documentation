@@ -27,6 +27,10 @@ Il nous reste simplement à définir la configuration spécifique à l'environne
 
 Créez un fichier *compose-prod.yml* et copier / coller le contenu du fichier *compose.yml*.
 
+```shell
+cp compose.yml compose-prod.yml
+```
+
 La différence avec la configuration de développement est que nous n'aurons pas besoin des services suivants :
 
 ### phpmyadmin

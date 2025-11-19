@@ -16,9 +16,14 @@ nos commandes **Drupal** dans ce fichier. Mais à force, notre fichier *Makefile
 Je vous propose donc de créer des fichiers *Makefile* pour chaque contexte.
 
 A la racine du projet, créez un dossier *make*. Dans ce dossier, créez les fichiers *docker.mk* et *drupal.mk* puis
-couper / coller tout le contenu de votre *Makefile* dans *docker.mk*. *Makefile* est maintenant vide.
+couper / coller tout le contenu de votre *Makefile* dans *docker.mk*.
 
-Nous pouvons maintenant mettre à jour le fichier *Makefile* pour qu'il importe les fichiers *docker.mk* et *drupal.mk*.
+```shell
+mkdir -p make && touch make/docker.mk && touch make/drupal.mk
+```
+
+*Makefile* est maintenant vide.
+Nous pouvons le mettre à jour pour qu'il importe les fichiers *docker.mk* et *drupal.mk*.
 
 ```makefile
 # Include make files
@@ -167,8 +172,6 @@ Et dans le fichier *make/docker.mk*, faites les modifications suivantes :
 # Ajoutez tout en haut du fichier les dépendances aux variables globales
 # Dependencies: Requires PROD_COMPOSE and DOCKER_EXEC_DRUPAL variables from main Makefile
 
-# Supprimez les variables
-
 # Simplifiez la commande shell
 shell:
 	@$(DOCKER_EXEC_DRUPAL) bash
@@ -204,7 +207,3 @@ drupal-install:
 
 Et voilà, nous avons ajouté une commande `drupal-install` et revu le fonctionnement de notre *Makefile* pour qu'il
 puisse être facilement réutilisé et maintenu.
-
-Il ne reste plus qu'une dernière étape à accomplir avant de continuer la configuration de notre site Drupal.
-
-Avez-vous deviné laquelle ?

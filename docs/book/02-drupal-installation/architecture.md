@@ -7,8 +7,7 @@ Notre projet a maintenant l'architecture suivante :
 .
 ├── .docker/
 │   ├── php/php.ini
-│   ├── .env.database
-│   └── .env.docker
+│   ├── .env
 ├── make/
 │   ├── docker.mk
 │   └── drupal.mk

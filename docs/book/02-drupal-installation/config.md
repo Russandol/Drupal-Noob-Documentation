@@ -90,6 +90,12 @@ Enfin, vous pouvez y ajouter le code suivant :
 $settings['config_sync_directory'] = '../config/default';
 ```
 
+Pensez également à supprimer cette ligne dans le fichier *settings.php* :
+
+```shell
+$settings['config_sync_directory'] = 'sites/default/files/xxx';
+```
+
 > ⚠️ Par défaut, les fichiers settings sont dans le dossier *web*, il faut donc revenir en arrière dans l'arborescence
 > pour trouver notre dossier *config*.
 

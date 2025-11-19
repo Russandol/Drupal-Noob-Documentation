@@ -12,6 +12,10 @@ Nous allons donc créer un fichier modèle contenant les variables d'environneme
 
 A la racine du projet créer un fichier *.docker/.env.example*. 
 
+```shell
+mkdir -p .docker && touch .docker/.env.example
+```
+
 > ❓ Pourquoi ne pas mettre le fichier directement à la racine du projet ?
 
 Lors de l'installation de **Drupal**, nous aurons besoin des variables d'environnement qui permettent de configurer la base de données.

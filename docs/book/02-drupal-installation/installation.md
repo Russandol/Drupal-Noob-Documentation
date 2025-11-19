@@ -18,7 +18,19 @@ ce qui nous évite d'avoir à l'installer manuellement dans notre conteneur.
 
 ## Installation
 
-Si ce n'est déjà fait, démarrez le container `dev` avec la commande :
+Si ce n'est déjà fait, initialisez le projet pour construire les fichiers d'environnement :
+```shell
+make init
+```
+
+Si besoin, modifiez les valeurs du fichier *.env* (nom de projet et de domaine, identifiants de la base de données).
+
+Construisez les images **Docker** :
+```shell
+make build
+```
+
+Puis démarrez le container `dev` avec la commande :
 ```shell
 make dev
 ```
@@ -82,8 +94,8 @@ Par mesure de sécurité et afin d'éviter d'écraser des données existantes, *
 dans un répertoire qui contient déjà des fichiers. C'est pour cette raison que nous effectuons l'installation dans un
 dossier temporaire.
 
-Une fois l'installation terminée, nous allons donc transférer tous les dossiers à la racine. Utilisez la commande
-suivante :
+Une fois l'installation terminée, nous allons donc transférer tous les dossiers à la racine. Utilisez les commandes
+suivantes :
 
 ```shell
 rsync -a drupal-temp/ ./
@@ -108,7 +120,7 @@ dépendances **PHP**, mais elle ne crée pas encore un site opérationnel.
 Pour finaliser cette installation, **Drupal** propose une interface graphique. Sur votre navigateur préféré, rendez-vous
 à l'adresse `127.0.0.1`.
 
-### 1.Choose language
+### 1. Choose language
 
 ![Initialisation de Drupal - Choisir la langue](images/drupal-installation-01.jpg)
 *Initialisation de Drupal - Choisir la langue*
@@ -129,7 +141,7 @@ Il n'y a pas vraiment de risque ou de problème à charger une autre langue que 
 
 Je vous invite donc à choisir "English" dans la liste et de valider le formulaire en cliquant sur le bouton "Save and continue".
 
-### 2.Choose profile
+### 2. Choose profile
 
 ![Initialisation de Drupal - Choisir le profil](images/drupal-installation-02.jpg)
 *Initialisation de Drupal - Choisir le profil*
@@ -152,16 +164,16 @@ La première raison est que ça nous donnera l'occasion de voir un à un tous le
 internet.
 
 Et surtout, dans le cas où plusieurs développeurs auront à travailler sur le même projet **Drupal**, il faut pouvoir permettre
-l'installation à partir de configuration existante. Et ce n'est possible qu'en effectuant une installation minimale. (Sans avoir
+l'installation à partir des configurations existantes. Et ce n'est possible qu'en effectuant une installation minimale. (Sans avoir
 à effectuer des modifications dans les fichiers de configs).
 
 Choisissez "Minimal" et validez le formulaire en cliquant sur "Save and continue".
 
-### 3.Verify requirements
+### 3. Verify requirements
 
 Vous n'avez rien à faire durant cette étape. Elle est d'ailleurs automatiquement validée.
 
-### 4.Set up database
+### 4. Set up database
 
 ![Initialisation de Drupal - Configurer la base de données](images/drupal-installation-03.jpg)
 *Initialisation de Drupal - Configurer la base de données*
@@ -195,11 +207,11 @@ que dans le cas où plusieurs sites sont hébergés dans la même base de donné
 
 Vous pouvez valider le formulaire en cliquant sur "Save and continue".
 
-### 5.Install site
+### 5. Install site
 
 Vous n'avez rien à faire durant cette étape. Elle est d'ailleurs automatiquement validée.
 
-### 6.Configure site
+### 6. Configure site
 
 ![Initialisation de Drupal - Configurer le site](images/drupal-installation-04.jpg)
 *Initialisation de Drupal - Configurer le site*

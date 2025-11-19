@@ -53,6 +53,7 @@ Installation de Drupal et outils de développement
 - Template
     - theme admin : adminimal + tester Gin Admin
     - installation template de base : Bootstrap 5
+      - erreur pourcentage abs() == installation d'un patch.
     - création d'un template enfant
     - compilation des fichiers scss
     - surcharge de bootstrap dans notre template enfant

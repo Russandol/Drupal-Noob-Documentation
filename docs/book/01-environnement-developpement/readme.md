@@ -20,7 +20,13 @@ Un fichier *README.md* complet doit contenir :
 - La **structure** du projet
 - Et les sections complémentaires comme la **résolution des problèmes** courants, les **workflows**, les **tests**, etc..
 
-A la racine du projet, créez un fichier *README.md* avec le contenu suivant :
+A la racine du projet, créez un fichier *README.md* 
+
+```shell
+touch README.md
+```
+
+Et ajoutez le contenu suivant :
 
 ```markdown
     # Drupal Project
@@ -124,9 +130,8 @@ A la racine du projet, créez un fichier *README.md* avec le contenu suivant :
     .
     ├── .docker/
     │   ├── php/
-    │   │   └── php.example.ini
-    │   ├── example.env.database
-    │   └── example.env.docker
+    │   │   └── php.ini.example
+    │   └── .env.example
     ├── .dockerignore
     ├── .gitignore
     ├── compose.yml

@@ -21,6 +21,11 @@ features:
     title: Installation de Drupal 11
     details: Installer Drupal 11 avec Composer et initialiser le projet
     link: /02-drupal-installation/
+    
+  - icon: ✏️
+    title: Les thème de Drupal
+    details: Installer et créer son propre thème pour Drupal
+    link: /03-drupal-theme/
 
   - icon: 🛠️
     title: Aide mémoire

@@ -7,16 +7,13 @@ que nous avons mis en place avec **Docker**.
 
 L’objectif est double :
 - Nous permettre de démarrer un site **Drupal** fonctionnel en quelques minutes,
-- Comprendre l’ensemble des étapes pour pouvoir personnaliser et maintenir votre projet.
+- Comprendre l’ensemble des étapes pour pouvoir personnaliser et maintenir notre projet.
 
 Au fil des chapitres, nous apprendrons à :
 - Installer un projet **Drupal 11** depuis zéro. 
 - Configurer correctement la base de données et les paramètres d’environnement. 
 - Initialiser le site via l’interface.
 - Préparer votre site pour un workflow de développement collaboratif.
-
-## Parcours de la section
-
 
 ## Résultat attendu
 

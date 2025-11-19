@@ -240,3 +240,4 @@ mon_theme/
 1. **Intégration avec Drush** : Vous pouvez configurer des hooks Drush pour compiler automatiquement le SASS lors du déploiement.
 
 Votre installation est maintenant complète ! Vous avez un workflow de développement moderne avec compilation SASS via Gulp dans un environnement Drupal 11 conteneurisé
+

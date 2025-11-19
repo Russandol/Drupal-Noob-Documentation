@@ -79,7 +79,11 @@ sudo apt update
 sudo apt install make
 ```
 
-Une fois l'installation terminée, créez le fichier *Makefile* (sans extension).
+Une fois l'installation terminée, créez le fichier *Makefile* (sans extension)
+
+```shell
+touch Makefile
+```
 
 ### Première commandes
 
@@ -131,7 +135,7 @@ help:
     @echo "  make init      - Initialise les fichiers d'environnement"
 
 init:
-	@if [ ! -f .docker/.env.example ]; then \
+	@if [ ! -f .docker/.env ]; then \
   		cp .docker/.env.example .docker/.env; \
   		echo "✅ File .docker/.env created from example"; \
   	else \
@@ -361,4 +365,4 @@ prod-logs:
 	@docker compose -f $(PROD_COMPOSE) logs -f
 ```
 
-Toutes nos commandes sont prêtes ! Nous pouvons maintenant passer à la configuration de **Drupal**.
+Toutes nos commandes sont prêtes ! Mais avant de passer à la configuration de **Drupal**, il nous reste une dernière chose à faire.

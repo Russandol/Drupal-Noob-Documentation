@@ -49,6 +49,8 @@ touch web/sites/default/settings/redis.php
 
 Dans ce fichier, ajoutez la configuration suivante : 
 ```php
+<?php
+
 // Activer Redis comme backend de cache par défaut.
 $settings['redis.connection']['interface'] = 'PhpRedis';
 $settings['redis.connection']['host'] = 'redis'; // correspond au nom du service Docker

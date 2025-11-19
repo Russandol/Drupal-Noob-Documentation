@@ -10,9 +10,8 @@ L'arborescence des fichiers de notre projet doit ressembler à ceci :
 .
 ├── .docker/
 │   ├── php/
-│   │   └── php.example.ini
-│   ├── example.env.database
-│   └── example.env.docker
+│   │   └── php.ini.example
+│   ├── .env.example
 ├── .dockerignore
 ├── .gitignore
 ├── compose.yml

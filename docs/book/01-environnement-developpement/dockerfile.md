@@ -11,7 +11,13 @@ défini dans la propriété `build` le chemin vers le fichier *Dockerfile* qui n
 
 Construisons pas à pas notre image **Docker**.
 
-Créez un fichier *Dockerfile* (sans extension) à la racine du projet. Une fois le fichier créé, nous allons y ajouter 
+Créez un fichier *Dockerfile* (sans extension) à la racine du projet. 
+
+```shell
+touch Dockerfile
+```
+
+Une fois le fichier créé, nous allons y ajouter 
 nos instructions
 
 ## Définir l'image

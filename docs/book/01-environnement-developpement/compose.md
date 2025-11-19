@@ -33,7 +33,12 @@ Nous aurons également besoin de plusieurs volumes pour enregistrer nos données
 
 ## Création des services
 
-Commencez par créer le fichier *compose.yml* à la racine du projet et ajoutez le code suivant :
+Commencez par créer le fichier *compose.yml* à la racine du projet
+```shell
+touch compose.yml
+```
+
+Et ajoutez le code suivant :
 
 ```yaml
 services:
@@ -280,7 +285,7 @@ des services.
 
 Il ne reste plus qu'à les définir dans la partie `volumes:`.
 
-> ⚠️ Vous ai-je déjà alertés sur l'indentation des fichiers YAML ?! Chaque volume est enfant de `volumes:`
+> ⚠️ Vous ai-je déjà alerté sur l'indentation des fichiers YAML ?! Chaque volume est enfant de `volumes:`
 
 ````yaml
 volumes:

@@ -14,7 +14,13 @@ Ce fichier permet d'exclure automatiquement des fichiers du versionnement, ce qu
 - **Réduire la taille du dépôt** en excluant les dossiers de dépendances comme *vendor/* ou *node_modules/*.
 - **Eviter les conflits inutiles**, comme sur les fichiers de logs ou de cache qui changent constamment.
 
-Créez le fichier *.gitignore* à la racine du projet et copier le texte suivant :
+Créez le fichier *.gitignore* à la racine du projet 
+
+```shell
+touch .gitignore
+```
+
+Et copier le texte suivant :
 
 ```dotenv
 # IDE files
@@ -38,7 +44,13 @@ Ce qui permet de :
 - **Renforcer la sécurité** en ignorant les informations sensibles dans l'image **Docker**.
 - **Evite d'incorporer** les fichiers spécifiques à l'environnement.
 
-Toujours à la racine du projet, créez le fichier *.dockerignore* et copier le texte suivant :
+Toujours à la racine du projet, créez le fichier *.dockerignore* 
+
+```shell
+touch .dockerignore
+```
+
+Et copier le texte suivant :
 
 ```dotenv
 # IDE files

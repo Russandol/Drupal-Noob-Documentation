@@ -160,14 +160,19 @@ Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit
     |-----------------------|----------------------------------------|
     | `make drupal-install` | Télécharge et install un projet Drupal |
 
+    ## Commandes Redis disponibles
+    
+    | Commande         | Description                           |
+    |------------------|---------------------------------------|
+    | `make redis-cli` | Accède au terminal du container Redis |
+
     ## 📁 Structure du projet
 
     ```
     .
     ├── .docker/
     │   ├── php/php.ini
-    │   ├── .env.database
-    │   └── .env.docker
+    │   └── .env
     ├── make/
     │   ├── docker.mk
     │   └── drupal.mk
@@ -178,6 +183,7 @@ Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit
     │   ├── modules
     │   ├── sites
     │   └── themes
+    ├── .env
     ├── .dockerignore
     ├── .gitignore
     ├── compose.yml
