@@ -8,7 +8,6 @@ Cette formation vous propose de concevoir un projet Drupal avec son environnemen
 
 - Docker Engine 20.10+
 - Docker Compose 2.0+
-- Make 4.0+
 - Git
 
 ## Stack technique
@@ -22,17 +21,6 @@ Cette formation vous propose de concevoir un projet Drupal avec son environnemen
 ## ✅ Installation
 
 Les lignes de commande suivantes doivent être effectuées dans l'interpréteur de commande Linux.
-
-🛠️ Vérifier si Make est installé :
-```bash
-make --version
-```
-
-🛠️ Si non, l'installer :
-```bash
-sudo apt update
-sudo apt install make
-```
 
 📁 Cloner le projet Git :
 ```bash
@@ -61,3 +49,12 @@ docs-1  |   ➜  Network: http://172.19.0.2:5173/
 ```
 
 Dans le navigateur, se rendre à l'adresse indiquée.
+
+## Arrêter le projet
+
+Utiliser le raccourci `Ctrl+C` dans le terminal pour stopper le projet.
+
+Puis arrêter et supprimer les conteneurs Docker : 
+```bash
+docker compose down
+```
