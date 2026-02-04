@@ -23,7 +23,7 @@ touch .gitignore
 Et copier le texte suivant :
 
 ```dotenv
-# IDE files
+# IDE files  ! TODO complete with your IDE (VSCode, Cursor)
 .idea/
 
 # Docker configuration

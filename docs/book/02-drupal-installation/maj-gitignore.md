@@ -23,10 +23,11 @@ Actuellement notre fichier *.gitignore* ressemble à ceci :
 Et bien en fait si, mais indirectement : rappelez-vous, lors de l'initialisation du module **Dotenv**, le module 
 a non seulement créé le fichier *.env*, mais l'a aussi automatiquement ajouté dans notre fichier *.gitignore*.
 
-A nous maintenant d'ajouter nos conditions d'exclusion. Mais nous n'avons presque rien à faire car **Drupal** a pensé à 
+À nous maintenant d'ajouter nos conditions d'exclusion. Mais nous n'avons presque rien à faire car **Drupal** a pensé à 
 tout !
 
-A l'installation le fichier *web/.exemple.gitignore* qui contient les principales exclusions recommendées. Ouvrez donc
+ # ! TODO ajouter de l'accent sur le 'A' => À 
+  À l'installation le fichier *web/.exemple.gitignore* qui contient les principales exclusions recommandées. Ouvrez donc
 ce fichier ainsi que notre *.env* et copiez / collez y les lignes suivantes :
 
 ```gitignore

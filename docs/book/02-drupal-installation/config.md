@@ -109,6 +109,8 @@ Depuis le début de ce chapitre, nous évoquons la possibilité d'exporter la co
 
 Avec **Drush** tout simplement !
 
+TODO Activer le module config `drush en config`
+
 Connectez-vous en shell au conteneur `drupal` :
 ```shell
 make shell

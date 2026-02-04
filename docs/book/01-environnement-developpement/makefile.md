@@ -177,6 +177,8 @@ help:
     @echo "  make init      - Initialise les fichiers d'environnement"
     @echo "  make build     - Construit les images Docker (dev)"
 
+ # ! TODO j'ajouterai des `...` poru signaler qu'il y  a du code entre les blocs
+
 # Code à ajouter à la fin du fichier
 build: init
 	@echo "🔨 Building Docker images for development..."
