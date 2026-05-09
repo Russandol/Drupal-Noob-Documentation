@@ -85,7 +85,13 @@ Et ajoutez le contenu suivant :
     make dev
     ```
     
-    📁 Ouvrir en tant qu'administrateur le fichier `C:\Windows\System32\drivers\etc\hosts` et ajouter la ligne 
+    📁 Ouvrir en tant qu'administrateur le fichier en fonction de l'OS
+    <!-- ? TODO ajout d'info pour l'environement linux -->
+    | OS     | Ficher                                                      |
+    |--------|-------------------------------------------------------------|
+    | Windows| `C:\Windows\System32\drivers\etc\hosts` et ajouter la ligne |
+    | Linux  | `/etc/hosts`                                                |
+    
     (remplacer <drupal-project> par le nom du projet) :
     ```bash
     127.0.0.1    <drupal-project>.test

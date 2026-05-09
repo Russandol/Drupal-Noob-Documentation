@@ -28,7 +28,7 @@ drush en redis
 
 Nous allons devoir rajouter des configurations dans nos fichiers settings.
 
-Mais pour éviter de surcharger le fichier *settings.php*, nous allons créer un nous fichier de configuration.
+Mais pour éviter de surcharger le fichier *settings.php*, nous allons créer un sous fichier de configuration.
 
 Tout d'abord commençons par nous donner les droits : 
 

@@ -8,8 +8,8 @@ Cette approche a des inconvénients :
 - Si vous avez plusieurs sites qui utilisent la même URL, vous pouvez rencontrer des problèmes de chevauchement de cookies.
 
 Et surtout, comme nous faisons un projet **Drupal**, certaines fonctionnalités nécessitent un vrai domaine.
-
-Heureusement, il est tout à fait possible d'indiquer à **Windows** qu'un nom de domaine pointe vers l'URL du localhost.
+<!-- ? TODO on reste sur windows ou on parle des autres OS? -->
+Heureusement, il est tout à fait possible d'indiquer à votre **OS** qu'un nom de domaine pointe vers l'URL du localhost.
 
 Pour ça nous devons modifier le fichier *hosts* qui se trouve dans : *C:\Windows\System32\drivers\etc\hosts*.
 

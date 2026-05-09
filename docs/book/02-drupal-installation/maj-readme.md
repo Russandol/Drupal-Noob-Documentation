@@ -173,9 +173,12 @@ Ouvrez le fichier *README.md* et ajoutez nos dernières modifications comme suit
     ├── .docker/
     │   ├── php/php.ini
     │   └── .env
+    ├── config/
+    │   └── default
     ├── make/
     │   ├── docker.mk
     │   └── drupal.mk
+    │   └── redis.mk
     ├── recipes/
     ├── vendor/
     ├── web/
@@ -201,4 +204,4 @@ Les modifications que nous avons effectuées :
 - Vous constaterez que nous avons également précisé qu'il faut générer un hash_salt. Comme nous l'avons vu lors 
 de la configuration des settings.
 - Ajout de la section `Commandes Drupal disponibles`.
-- Modification de la section `Structure du projet` pour inclure le dossier `make` et la structure de dossiers de Drupal.
+- Modification de la section `Structure du projet` pour inclure le dossier `make`, `config` et la structure de dossiers de Drupal.

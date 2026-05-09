@@ -96,7 +96,9 @@ Ouvrez le fichier *Makefile* et ajoutez le code suivant :
 
 help:
     @echo "Commandes disponibles :"
-    @echo "  make init      - Initialise les fichiers d'environnement."
+    @echo "  make init      - Initialise les fichiers d'environnement:"
+# ? TODO    @echo "  make init      - Initialise les fichiers d'environnement: => finir par ':'"
+
 ```
 
 Nous venons de rajouter une commande `help` qui affichera le détail des commandes disponibles.
@@ -132,7 +134,7 @@ Ajoutons le code au fichier *Makefile* :
 
 help:
     @echo "Commandes disponibles :"
-    @echo "  make init      - Initialise les fichiers d'environnement"
+    @echo "  make init      - Initialise les fichiers d'environnement :"
 
 init:
 	@if [ ! -f .docker/.env ]; then \
@@ -174,10 +176,10 @@ ENV_FILE = .docker/.env
 
 help:
     @echo "Commandes disponibles :"
-    @echo "  make init      - Initialise les fichiers d'environnement"
-    @echo "  make build     - Construit les images Docker (dev)"
+    @echo "  make init      - Initialise les fichiers d'environnement :"
+    @echo "  make build     - Construit les images Docker (dev) :"
 
- # ! TODO j'ajouterai des `...` poru signaler qu'il y  a du code entre les blocs
+ # ? TODO j'ajouterai des `...` pour signaler qu'il y  a du code entre les blocs
 
 # Code à ajouter à la fin du fichier
 build: init

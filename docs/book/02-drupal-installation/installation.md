@@ -223,10 +223,14 @@ pour le comprendre.
 
 Une fois les informations entrées, validez le formulaire en cliquant sur "Save and continue".
 
+
 ## Félicitation
 
 ![Initialisation de Drupal - Fin d'installation](images/drupal-installation-05.jpg)
 *Initialisation de Drupal - Fin d'installation*
+
+<!-- ? TODO  -->
+Accéder au site en ajoutant `/user` à la fin de l'URL => `http://127.0.0.1/user`
 
 Votre site **Drupal** est désormais installé et initialisé... et qu'est-ce qu'il est moche !
 

@@ -28,7 +28,7 @@ La structure des fichiers est la suivante :
 
 ## settings.php
 
-Le fichier qui nous intéresse pour le moment est le fichier *web/sites/default/settings.php*. C'est LE fichier de configuration
+Le fichier qui nous intéresse pour le moment est le fichier *web/sites/default/settings.php*. C'est **LE** fichier de configuration
 actif. C'est dans ce fichier par exemple que sont définies les configurations de connexion à la base de données.
 
 Ouvrez le fichier et positionnez-vous tout à la fin. Vous devriez voir ce code : 
@@ -199,7 +199,8 @@ Pour que **Drupal** prenne en compte les variables d'environnement, le module **
 automatique dans le fichier *load.environment.php*. Nous allons ajouter du code pour qu'il prenne aussi en compte le fichier
 d'environnement *.docker/.env*.
 
-Ouvrez le fichier *load.environment.php* et ajoutez le code suivant : 
+<!-- ? TODO modification de la ligne suivante -->
+Ouvrez le fichier *load.environment.php* et le remplacer avec le code suivant : 
 ```php
 <?php
 

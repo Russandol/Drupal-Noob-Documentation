@@ -304,6 +304,7 @@ Dans ce chapitre, nous avons configuré notre environnement de développement **
 tous les services nécessaires pour notre projet **Drupal 11** : *compose.yml*
 
 - Un service `drupal` pour exécuter notre application
+  <!-- ? TODO mettre le drupal avec la même forme que MARIADB? -->
 - Une base de données **MariaDB** pour stocker nos données
 - **PHPMyAdmin** pour administrer facilement notre base de données
 - **Redis** pour optimiser le cache de Drupal

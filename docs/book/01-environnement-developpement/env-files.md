@@ -28,6 +28,7 @@ De plus, **Drupal** ne gère pas nativement les fichiers d'environnement. Nous a
 de son initialisation, génère un fichier d'environnement. Pour éviter les éventuels conflits et surcharges, autant bien 
 séparer les logiques de configuration de l'application.
 
+<!-- ? Dans le fichier *.docker/.env.example* que nous vennons de créer, ajouter les variables suivantes -->
 Créez donc un fichier *.docker/.env.example* et ajoutez les variables suivantes :
 
 ```dotenv

@@ -23,7 +23,8 @@ mkdir -p make && touch make/docker.mk && touch make/drupal.mk
 ```
 
 *Makefile* est maintenant vide.
-Nous pouvons le mettre à jour pour qu'il importe les fichiers *docker.mk* et *drupal.mk*.
+<!-- ? TODO indique juste ce qu'on peut faire car on remplace le makefile plus bas -->
+Nous pourrions le mettre à jour pour qu'il importe les fichiers *docker.mk* et *drupal.mk*.
 
 ```makefile
 # Include make files
@@ -199,7 +200,7 @@ drupal-install:
 	@echo "🔄 Copying Drupal files..."
 	@$(DOCKER_EXEC_DRUPAL) rsync -a drupal-temp/ ./
     @echo "🧹 Remove core-project-message module..."
-	@$(DOCKER_EXEC_DRUPAL) composer remove drupal/core-project-message
+    @$(DOCKER_EXEC_DRUPAL) composer remove drupal/core-project-message
 	@echo "🧹 Cleaning temporary files..."
 	@$(DOCKER_EXEC_DRUPAL) rm -rf drupal-temp/
 	@echo "✅ Drupal has been successfully installed"
