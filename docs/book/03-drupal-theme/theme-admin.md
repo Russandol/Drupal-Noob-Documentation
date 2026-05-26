@@ -25,6 +25,9 @@ Activer le thème :
 drush theme:enable gin
 ```
 
+La commande demande de confirmer.
+
+
 Définir le thème pour l'administration :
 ```shell
 drush config:set system.theme admin gin

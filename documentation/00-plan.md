@@ -7,11 +7,54 @@ en gras :
 en italique : 
 - fichiers
 
+blocs personnalisés : 
+
+::: info
+Ceci est un bloc d'information.
+:::
+
+::: tip
+Ceci est une astuce.
+:::
+
+::: warning
+Ceci est un avertissement.
+:::
+
+::: danger
+Ceci est un avertissement critique.
+:::
+
+::: details
+Ceci est un bloc dépliable (accordéon). Le contenu est masqué par défaut.
+:::
+
 Toujours sauter une ligne sous les titres
 
 # Table des matières :
 
 Le but de cette documentation et de mettre en place et de comprendre un environnement Drupal pour un ou plusieurs projets
+
+- Formation : 
+  - Le projet
+  - Installation de Drupal 11
+    - Introduction
+    - Présentation de DDEV
+    - Installation d'un projet Drupal 11 avec DDEV
+
+
+- DDEV :
+  - Présentation
+- DRUPAL :
+  - Installation
+    - 
+
+
+
+
+
+
+-- OLD --
 
 Création de l'environnement
 - Docker :

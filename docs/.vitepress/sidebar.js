@@ -1,11 +1,5 @@
-import cheatSheet from "./sidebars/cheat-sheet";
-import environment from "./sidebars/environment";
-import drupalInstall from "./sidebars/drupal-install";
-import drupalTheme from "./sidebars/drupal-theme";
+import drupalProject from "./sidebars/drupal-project";
 
 export default [
-  environment,
-  drupalInstall,
-  drupalTheme,
-  cheatSheet,
+  drupalProject
 ]
