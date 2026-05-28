@@ -28,33 +28,24 @@ git clone https://github.com/Russandol/Drupal-Noob-Documentation.git
 cd Drupal-Noob-Documentation
 ```
 
-🐳 Construire les images Docker
+🐳 Construire l'environnement avec DDEV
 ```bash
-docker compose build
+ddev start
 ```
 
-🐳 Démarrer l'environnement de développement Docker
+Installer les dépendances
 ```bash
-docker compose up
+ddev npm install
 ```
 
-Une fois l'environnement démarré, ce message s'affiche dans le terminal : 
+Se rendre sur le site en http
 ```bash
-Attaching to docs-1
-docs-1  | 
-docs-1  |   vitepress v1.6.4
-docs-1  | 
-docs-1  |   ➜  Local:   http://localhost:5173/
-docs-1  |   ➜  Network: http://172.19.0.2:5173/
+ddev launch :5172
 ```
-
-Dans le navigateur, se rendre à l'adresse indiquée.
 
 ## Arrêter le projet
 
-Utiliser le raccourci `Ctrl+C` dans le terminal pour stopper le projet.
-
-Puis arrêter et supprimer les conteneurs Docker : 
+Arrêter DDEV
 ```bash
-docker compose down
+ddev stop
 ```
