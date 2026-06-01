@@ -93,6 +93,20 @@ Ce fichier rassemble les commandes les plus utilisées dans le projet. Il sert d
   |---|---|
 | `ddev drush deploy` | Exécuter les étapes de déploiement (updb + cim + cr) |
 
+### Flags utiles
+
+Ces options globales peuvent être ajoutées à **n'importe quelle commande Drush** :
+
+| Flag | Alias | Description |
+|---|---|---|
+| `--yes` | `-y` | Accepter automatiquement toutes les confirmations |
+| `--no` | `-n` | Refuser automatiquement toutes les confirmations |
+| `--verbose` | `-v` | Afficher des informations détaillées sur l'exécution |
+| `--debug` | `-vvv` | Afficher les informations de débogage (très verbeux) |
+| `--simulate` | | Simuler l'exécution sans appliquer les changements |
+| `--uri=URI` | `-l` | Définir l'URL de base du site (utile en multisite) |
+| `--xdebug` | | Activer Xdebug pour déboguer la commande Drush dans l'IDE |
+
 ## 🌿 Git
 
 ### Commandes de base

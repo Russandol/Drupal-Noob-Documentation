@@ -35,39 +35,37 @@ Toujours sauter une ligne sous les titres
 
 Le but de cette documentation et de mettre en place et de comprendre un environnement Drupal pour un ou plusieurs projets
 
-- Formation : 
-  - Le projet
-  - Installation de Drupal 11
-    - Introduction
-    - Présentation de DDEV
-    - Installation d'un projet Drupal 11 avec DDEV
+
+Découvrir Drupal
+  -> ajouter le theme admin
+  -> faire le point sur les différentes sections
+    -> Contenu
+    -> Structure
+    -> Apparence
+    -> Extension
+    -> Personnes
+    -> Rapports
+    -> Configuration
 
 
-- DDEV :
-  - Présentation
-- DRUPAL :
-  - Installation
-    - 
+Template
+  -> installer theme admin
+  -> installer theme
+    -> faire un theme enfant
 
+Administration
+  -> les types de contenu
+    -> les champs
+    -> l'affichage du formulaire
+    -> l'affichage de la page
+  -> les blocks
+    -> block layout
+    -> block personnalisés
+  -> les vues
 
-
-
-
+Module custom
 
 -- OLD --
-
-Création de l'environnement
-- Docker :
-  - Présentation
-  - compose.yml
-    - example.env
-    - php.example.ini
-  - Dockerfile
-  - compose.prod.yml
-  - .dockerignore et .gitignore
-  - Lignes de commande
-  - Makefile
-  - README : rédaction de la documentation de l'installation de l'environnement Docker
 
 Installation de Drupal et outils de développement
 - Installer Drupal

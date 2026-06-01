@@ -61,7 +61,7 @@ ddev phpmyadmin
 
 **DDEV** a automatiquement utilisé les informations de configuration de votre projet pour configurer **PHPMyAdmin** !
 
-::: info L'incontournable de tous les projets
-Dans le prochain chapitre, nous allons écrire un fichier incontournable pour tous les projets et qui est pourtant bien
-trop souvent négligé : [le fichier README](/drupal-project/installation/readme).
+::: info Configurer Xdebug
+Dans le prochain chapitre, nous allons configurer un autre outil indispensable pour le développement : 
+[Xdebug](/drupal-project/installation/xdebug)
 :::

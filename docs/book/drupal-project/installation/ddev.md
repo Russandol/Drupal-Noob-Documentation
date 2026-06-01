@@ -46,6 +46,27 @@ Le terminal doit afficher le dashboard de **DDEV**.
 Pour quitter le dashboard, appuyer sur la touche `q`.
 :::
 
+## Plugin PHPStorm
+
+Si vous utilisez **PHPStorm** comme IDE, sachez qu'un plugin est disponible : **DDEV Integration**.
+
+Ce plugin apporte les fonctionnalités suivantes : 
+
+* **Complétion** : *config.yaml* de **DDEV** est automatiquement détecté. De l'autocomplétion et des suggestions 
+sont proposées.
+* Intégration dans le **terminal** : Possibilité de se connecter directement dans le container **DDEV** 
+dans le terminal. Cliquez sur la flèche pour sélectionner le type de terminal et choisissez *DDEV web container*.
+* Configuration de la **Base de données** : dès le démarrage de l'IDE, une connexion à la base de données
+est automatiquement faites avec l'utilisateur `db`. Cette connexion est visible dans la fenêtre *Database*.
+
+Pour l'installer, rendez-vous dans "Settings -> Plugins -> Marketplace" et cherchez **DDEV Integration**.
+
+![Plugin DDEV Integration dans PHPStorm](images/screenshots/ddev-phpstorm.png)
+*Plugin DDEV Integration dans PHPStorm*
+
+Cliquez ensuite sur "Install", puis sur "Apply" et "OK" pour fermer la fenêtre. **PHPStorm** devrait détecter automatiquement
+**DDEV**.
+
 ::: info Pour le moment, nous n'avons aucun projet **DDEV** configuré.
 Nous allons tout de suite y remédier et installer **Drupal** dans [la prochaine étape](/drupal-project/installation/drupal)
 :::

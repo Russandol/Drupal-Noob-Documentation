@@ -92,6 +92,12 @@ Et ajoutez le contenu suivant :
     ```shell
     ddev drush si --existing-config
     ```
+
+    📁 Créer le dossier utilisé par PHPUnit pour enregistrer les captures HTML générées lors des 
+    tests fonctionnels : 
+    ```shell
+    mkdir -p web/sites/simpletest/browser_output
+    ```
     
     ## 🔧 Configuration
 
@@ -115,14 +121,18 @@ Et ajoutez le contenu suivant :
       │ └── themes/            # Contient les thèmes contrib et custom
       ├── .env
       ├── .env.example
+      ├── .gitignore
       ├── composer.json
       ├── composer.lock
-      └── load.environment.php # Importe les variables d'environnement dans Drupal
+      ├── load.environment.php # Importe les variables d'environnement dans Drupal
+      ├── phpcs.xml            # Fichier de configuration de CodeSniffer
+      ├── phpstan.neon         # Fichier de configuration de PHPStan
+      └── phpunit.xml          # Fichier de confugration de PHPUnit
     ```
 ```
 
 ::: warning Versions Docker
-J'ai indiqué les versions minimales requises pour DDEV, Docker et Docker Compose que j'ai actuellement. 
+J'ai indiqué les versions minimales requises pour **DDEV**, **Docker** et **Docker Compose** que j'ai actuellement. 
 Vous pouvez les adapter à votre configuration.
 :::
 
