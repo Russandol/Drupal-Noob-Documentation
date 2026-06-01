@@ -25,6 +25,7 @@ Ce fichier rassemble les commandes les plus utilisées dans le projet. Il sert d
 * [DDEV](#-ddev)
 * [Composer](#-composer)
 * [Drush](#-drush)
+* [Code Quality](#-code-quality)
 * [Git](#-git)
 
 ## 🐳 DDEV
@@ -106,6 +107,35 @@ Ces options globales peuvent être ajoutées à **n'importe quelle commande Drus
 | `--simulate` | | Simuler l'exécution sans appliquer les changements |
 | `--uri=URI` | `-l` | Définir l'URL de base du site (utile en multisite) |
 | `--xdebug` | | Activer Xdebug pour déboguer la commande Drush dans l'IDE |
+
+## 🔍 Code Quality
+
+### PHPUnit
+
+| Commande | Description |
+|---|---|
+| `ddev exec phpunit` | Lancer tous les tests |
+| `ddev exec phpunit --filter NomDuTest` | Lancer un test spécifique |
+| `ddev exec phpunit path/to/tests` | Lancer les tests d'un répertoire |
+| `ddev exec phpunit --coverage-html reports/` | Générer un rapport de couverture HTML |
+
+### PHPStan
+
+| Commande | Description |
+|---|---|
+| `ddev exec phpstan analyse` | Lancer l'analyse statique du code |
+| `ddev exec phpstan analyse --level=max` | Lancer l'analyse au niveau le plus strict |
+| `ddev exec phpstan analyse path/to/module` | Analyser un répertoire spécifique |
+
+### PHP_CodeSniffer
+
+| Commande | Description |
+|---|---|
+| `ddev exec phpcs` | Vérifier le respect des standards de codage |
+| `ddev exec phpcs --standard=Drupal path/to/module` | Vérifier avec le standard Drupal |
+| `ddev exec phpcs --standard=DrupalPractice path/to/module` | Vérifier les bonnes pratiques Drupal |
+| `ddev exec phpcbf` | Corriger automatiquement les erreurs de codage |
+| `ddev exec phpcbf --standard=Drupal path/to/module` | Corriger automatiquement avec le standard Drupal |
 
 ## 🌿 Git
 
