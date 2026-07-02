@@ -40,9 +40,9 @@ git remote -v
 ```
 L'url doit correspondre à celle du ssh.
 
-Si non (remplacer <URL> par l'url du repo) : 
+Si non (remplacer URL par l'url du repo) : 
 ```shell
-git remote set-url originer <URL>
+git remote set-url originer URL
 ```
 
 Modifier le fichier .ssh/config : 
