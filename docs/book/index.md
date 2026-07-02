@@ -16,6 +16,10 @@ features:
     title: Un projet de A à Z
     details: Mise en place d'un projet Drupal 11 complet.
     link: /drupal-project/
+  - icon: 🖼️
+    title: Drupal Canvas
+    details: Comprendre et bien utiliser Drupal Canvas.
+    link: /drupal-canvas/
     
 #  - icon: 📁
 #    title: Le projet

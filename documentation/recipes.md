@@ -5,14 +5,34 @@ Présentation des recipes
 drupal/core-recipe-unpack est désormais automatiquement présent depuis drupal 11.2.
 il permet de décompresser les recipes dans le dossier de votre projet. (notamment les modules ou theme ajouté)
 
+Pour ajouter des modules à installer, il faut ajouter un composer.json à la recipes
 
-Après avoir créé la recipe, pour récupérer les dépendances
-ddev composer require drupal/my-recipe
-en cas de problème de stabilité, rajouter `:@dev` à la fin
+```json
+{
+  "name": "drupal/my-recipe",
+  "description": "MyRecipe",
+  "type": "drupal-recipe",
+  "require": {
+    "drupal/gin": "^3.0",
+    "drupal/gin_toolbar": "^1.0"
+  }
+}
+```
 
-et installer la recipe
-ddev drush recipe ../recipes/my-recipe
-`my-recipe` étant le nom de la recipe
+et dans le composer du projet (pas de la recipe) il faut ajouter : 
+
+```json
+{
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./recipes/my-recipe"
+        }
+    ]
+}
+```
+
+Créer ensuite le fichier recipe.yml
 
 ```yaml
 name: "MyRecipe"
@@ -73,5 +93,12 @@ config:
     system.theme:
       simpleConfigUpdate:
         admin: gin
-
 ```
+
+Après avoir créé la recipe, pour récupérer les dépendances
+ddev composer require drupal/my-recipe
+en cas de problème de stabilité, rajouter `:@dev` à la fin
+
+et installer la recipe
+ddev drush recipe ../recipes/my-recipe
+`my-recipe` étant le nom de la recipe

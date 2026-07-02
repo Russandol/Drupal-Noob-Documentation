@@ -37,6 +37,38 @@ Le but de cette documentation et de mettre en place et de comprendre un environn
 
 
 Découvrir Drupal
+
+- L'administration de Drupal
+  - l'utilisateur 1 admin (changement de mot de passe avec Drush si oublie)
+  - Installation du theme admin Gin + Gin Toolbar avec Drush, montrer l'administration du template
+  - Les utilisateurs
+    - Configuration du site sur les utilisateurs
+    - distinction utilisateur non authentifié et authentifié
+    - les rôles
+      - Le rôle administrator n'existe pas, créer le rôle administrator
+    - les permissions
+  - La configuration / basic site settings
+
+
+- Les entités et types de contenu : 
+  - Nœuds (nodes), taxonomies, blocs, utilisateurs, médias
+  - Différence entre entité de contenu et entité de configuration
+
+- Activation des modules du cœur
+  - Activer manuellement chaque module nécessaire (Node, Field, Text, Taxonomy, Views, etc.)
+  - Comprendre les dépendances entre modules
+- Création des types de contenu
+  - Définir des types de contenu personnalisés (Article, Page, Événement…)
+  - Ajouter des champs (texte, image, référence d'entité, date, lien…)
+  - Gestion de l'affichage (View modes, Form modes)
+- Taxonomie et classification
+  - Vocabulaires et termes
+  - Champs de référence de taxonomie
+- Gestion des médias
+  - Module Media et Media Library
+  - Types de médias (Image, Vidéo, Document…)
+
+
   -> ajouter le theme admin
   -> faire le point sur les différentes sections
     -> Contenu
