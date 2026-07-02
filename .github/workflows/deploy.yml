@@ -32,4 +32,4 @@ jobs:
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: docs/.vitepress/dist/
-          server-dir: drupalnoob.la-taniere.net/
+          server-dir: /
