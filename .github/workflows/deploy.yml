@@ -31,6 +31,6 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: ".vitepress/dist/*"
+          source: "docs/.vitepress/dist/*"
           target: ${{ secrets.SSH_TARGET_DIR }}
-          strip_components: 2
+          strip_components: 3
