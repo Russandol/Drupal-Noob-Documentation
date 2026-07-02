@@ -25,13 +25,11 @@ jobs:
       - name: Build VitePress
         run: npm run docs:build
 
-      - name: Upload dist via SCP
-        uses: appleboy/scp-action@v0.1.7
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USER }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          source: "docs/.vitepress/dist/*"
-          target: ${{ secrets.SSH_TARGET_DIR }}
-          strip_components: 3
-          port: 2908
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: docs/.vitepress/dist/
+          server-dir: /drupalnoob.la-taniere.net/
