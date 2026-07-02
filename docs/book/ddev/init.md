@@ -53,11 +53,8 @@ selon un usage spécifique.
 - **Demo Umami Food Magazine** : site de démonstration pré-rempli avec du contenu d'exemple. Utile pour découvrir les
   possibilités de Drupal ou comme base pour un site magazine.
 
-Par défaut j'aurais tendance à proposer le profil **Standard**. Mais pour cette formation nous allons effectuer l'installation
-avec le profil **Minimal**.
-
-La première raison est que ça nous donnera l'occasion de voir un à un tous les modules principaux à la création d'un site
-internet.
+Par défaut le profil **Standard** s'impose. Mais je préfère installer un site en **Minimal** pour avoir totalement le
+contrôle sur les modules que nous souhaitons installer.
 
 Et surtout, dans le cas où plusieurs développeurs auront à travailler sur le même projet **Drupal**, il faut pouvoir permettre
 l'installation à partir des configurations existantes. Et ce n'est possible qu'en effectuant une installation minimale. (Sans avoir
@@ -89,13 +86,13 @@ Dernière étape de l'initialisation de notre projet Drupal.
 
 Il ne reste plus qu'à indiquer les informations de notre site internet. Vous pouvez saisir les informations suivantes : 
 
-* **Site name** : CinéCritique
-* **Site email address** : contact@cineticritique.com (pas besoin que l'adresse mail soit valide car on utilisera un catcher de mail)
+* **Site name** : MonProjet
+* **Site email address** : contact@mon-projet.com (pas besoin que l'adresse mail soit valide car on utilisera un catcher de mail)
 * **SITE MAINTENANCE ACCOUNT**
   * **Username** : admin
   * **Password** : password (nous sommes en local, pas besoin que le mot de passe soit sécurisé)
   * **Confirm password** : password
-  * **Email address** : admin@cineticritique.com (Ici aussi il n'est pas nécessaire que l'adresse mail soit valide)
+  * **Email address** : admin@mon-projet.com (Ici aussi il n'est pas nécessaire que l'adresse mail soit valide)
 * **REGIONAL SETTINGS**
   * **Default time zone** : Paris
 * **UPDATE NOTIFICATIONS** :
@@ -109,11 +106,7 @@ Une fois les informations entrées, validez le formulaire en cliquant sur "Save 
 ![Initialisation de Drupal - Fin d'installation](images/screenshots/drupal-installation-04.png)
 *Initialisation de Drupal - Fin d'installation*
 
-Votre site **Drupal** est désormais installé et initialisé... et il est très moche !
+Votre site **Drupal** est désormais installé et initialisé... et il est **très moche** !
 
 Mais ne vous inquiétez pas, c'est tout à fait normal. N'oubliez pas que nous avons effectué une installation minimale.
 Nous n'avons donc pas de contenu, ni de templates, ni de modules, etc..
-
-::: info Avant d'installer notre tout premier module
-Prenons un peu de temps pour analyser [l'architecture d'un projet **Drupal**](/drupal-project/installation/architecture).
-:::

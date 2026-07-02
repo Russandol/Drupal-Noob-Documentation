@@ -4,17 +4,6 @@ Comme vu dans le chapitre précédent, nous allons utiliser **DDEV** pour mettre
 
 ## Configurer le projet
 
-Placez vous dans le dossier du projet avec la commande : 
-
-```shell
-cd ~/projets/cinecritique
-```
-
-::: warning ⚠️ Je ne préciserais plus cette commande à l'avenir.
-Toutes les commandes de cette formation devront être lancées en étant dans le dossier du projet. Je ne préciserais donc
-plus cette commande dans le reste de la formation.
-:::
-
 Nous allons maintenant utiliser **DDEV** pour initialiser un projet **Drupal**. Tapez la commande suivante : 
 
 ```shell
@@ -22,8 +11,9 @@ ddev config --project-type=drupal11 --docroot=web
 ```
 
 Cette commande crée un dossier *.ddev/* contenant toute la configuration de votre environnement :
+
 ``` 
-cinecritique/
+mon-projet/
 └── .ddev/
     ├── config.yaml      ← Configuration principale du projet
     └── ...
@@ -31,15 +21,16 @@ cinecritique/
 
 ::: info ❓ Que font ces options ?
 `--project-type=drupal11` : indique à **DDEV** que nous allons utiliser **Drupal 11**. Il adaptera automatiquement la configuration
-(version de PHP, paramètres du serveur…).
+(version de **PHP**, paramètres du serveur…).
 
 `--docroot=web` : définit le dossier *web/* comme racine du serveur web. C'est la convention utilisée par **Drupal** pour séparer
 les fichiers publics du reste du projet.
 :::
 
 Le dossier *web/* est également créé, il contient pour le moment les fichiers de configuration de **Drupal**.
+
 ``` 
-cinecritique/
+mon-projet/
 ├── .ddev/
 └── web/
     └── sites/default/
@@ -56,7 +47,7 @@ ddev start
 ```
 
 ::: warning ⚠️ Collecte de données anonymes
-Lors de la première utilisation de DDEV, un message peut apparaître :
+Lors de la première utilisation de **DDEV**, un message peut apparaître :
 
 `It looks like you have a new DDEV release. Permission to beam up?`
 
@@ -76,16 +67,18 @@ Lors du premier démarrage, **DDEV** va :
 * 🔗 Attribuer une URL locale à votre projet
 
 ::: warning Le premier démarrage peut prendre plusieurs minutes selon votre connexion internet.
-Les lancements suivants seront beaucoup plus rapides car les images Docker seront déjà en cache.
+Les lancements suivants seront beaucoup plus rapides car les images **Docker** seront déjà en cache.
 :::
 
-Une fois le démarrage terminé, DDEV affiche un récapitulatif :
+Une fois le démarrage terminé, **DDEV** affiche un récapitulatif :
+
 ``` 
-Successfully started cinecritique
-Project can be reached at https://cinecritique.ddev.site
+Successfully started mon-projet
+Project can be reached at https://mon-projet.ddev.site
 ```
 
 Vous pouvez vérifier que tout fonctionne avec :
+
 ``` shell
 # Afficher les informations du projet
 ddev describe
@@ -98,9 +91,11 @@ Cette commande affiche les informations sur le projet courant, notamment les URL
 les ports mappés, les conteneurs en cours d'exécution, etc..
 
 Ouvrir le projet dans le navigateur
+
 ```shell
 ddev launch
 ```
+
 ::: warning À ce stade, le navigateur affichera une page d'erreur 403
 C'est normal ! **Drupal** n'est pas encore installé.
 :::
@@ -120,6 +115,7 @@ thèmes, tout en maintenant une structure de projet cohérente et en simplifiant
 Cela signifie que dès que votre projet **DDEV** est lancé, vous pouvez exécuter vos commandes **Composer** habituelles.
 
 Si vous souhaitez vérifier que **Composer** est bien présent dans notre container, vous pouvez simplement taper la commande :
+
 ```shell
 ddev composer
 ```
@@ -155,5 +151,5 @@ ddev composer create-project was successful.
 En quelques commandes, nous avons généré un environnement de développement local et installé **Drupal** !
 
 Mais notre projet **Drupal** n'est pas encore prêt à être utilisé. Nous devons maintenant 
-[initialiser notre site](/drupal-project/installation/init).
+[initialiser notre site](/ddev/init).
 :::

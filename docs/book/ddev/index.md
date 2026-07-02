@@ -3,19 +3,20 @@
 ## Qu'est-ce que DDEV ?
 
 **DDEV** est un outil open source qui permet de créer des environnements de développement locaux en quelques minutes,
-basé sur Docker. Il est conçu pour simplifier radicalement la mise en place d'un projet web (Drupal, WordPress, Laravel, etc.)
-sans avoir à configurer manuellement chaque service (serveur web, base de données, PHP, etc.).
+basé sur **Docker**. Il est conçu pour simplifier radicalement la mise en place d'un projet web 
+(**Drupal**, **WordPress**, **Laravel**, etc.)
+sans avoir à configurer manuellement chaque service (serveur web, base de données, **PHP**, etc.).
 
-En résumé : **DDEV** fait tout le travail de configuration Docker à votre place.
+En résumé : **DDEV** fait tout le travail de configuration **Docker** à votre place.
 
-Pas besoin de mettre en place manuellement chaque service (serveur web, base de données, PHP, etc.), des fichiers de configuration,
+Pas besoin de mettre en place manuellement chaque service, des fichiers de configuration,
 des makefiles pour simplifier les workflows, etc.. **DDEV** fait tout.
 
 ## Prérequis
 
-Nous avons besoin d'un fournisseur Docker sur notre système avant de pouvoir installer DDEV.
+Nous avons besoin d'un fournisseur **Docker** sur notre système avant de pouvoir installer **DDEV**.
 
-Pour plus d'informations sur les fournisseurs Docker, en fonction de votre système,
+Pour plus d'informations sur les fournisseurs **Docker**, en fonction de votre système,
 consulter la [Documentation DDEV](https://docs.ddev.com/en/stable/users/install/docker-installation/).
 
 ## Installation
@@ -23,16 +24,17 @@ consulter la [Documentation DDEV](https://docs.ddev.com/en/stable/users/install/
 La [Documentation DDEV](https://docs.ddev.com/en/stable/users/install/ddev-installation/) est très claire sur comment
 installer **DDEV**.
 
-Ayant déjà un fournisseur Docker installé sur mon système Windows (Docker Desktop avec la distribution Ubuntu), j'ai suivi
+Ayant déjà un fournisseur **Docker** installé sur mon système **Windows** (**Docker Desktop** avec la distribution *Ubuntu*), j'ai suivi
 les étapes suivantes :
 
-* J'ai téléchargé l'installeur de DDEV pour Windows (architecture AMD64).
+* J'ai téléchargé l'installeur de **DDEV** pour **Windows** (architecture AMD64).
 * Durant l'installation, j'ai sélectionné *Ubuntu* comme distribution.
 
 L'installeur a automatiquement configuré **DDEV** par rapport à mon fournisseur Docker.
 
 Pour vérifier l'installation, ouvrir une invite de commande dans WSL2 (interpréteur de commandes Linux) et exécuter
 la commande suivante :
+
 ```shell
 ddev
 ```
@@ -68,5 +70,5 @@ Cliquez ensuite sur "Install", puis sur "Apply" et "OK" pour fermer la fenêtre.
 **DDEV**.
 
 ::: info Pour le moment, nous n'avons aucun projet **DDEV** configuré.
-Nous allons tout de suite y remédier et installer **Drupal** dans [la prochaine étape](/drupal-project/installation/drupal)
+Nous allons tout de suite y remédier et installer **Drupal** dans [la prochaine étape](/ddev/drupal)
 :::

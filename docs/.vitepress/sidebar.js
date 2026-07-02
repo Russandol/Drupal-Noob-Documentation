@@ -1,7 +1,7 @@
-import drupalProject from "./sidebars/drupal-project";
+import ddev from "./sidebars/ddev";
 import drupalCanvas from "./sidebars/drupal-canvas";
 
 export default [
-  drupalProject,
+  ddev,
   drupalCanvas,
 ]

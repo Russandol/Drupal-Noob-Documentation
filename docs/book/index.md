@@ -12,10 +12,10 @@ hero:
       link: https://github.com/Russandol/Drupal-Noob-Documentation
 
 features:
-  - icon: 🏗️
-    title: Un projet de A à Z
-    details: Mise en place d'un projet Drupal 11 complet.
-    link: /drupal-project/
+  - icon: 🐳
+    title: DDEV
+    details: Mettre en place un environnement de développement local avec DDEV.
+    link: /ddev/
   - icon: 🖼️
     title: Drupal Canvas
     details: Comprendre et bien utiliser Drupal Canvas.
