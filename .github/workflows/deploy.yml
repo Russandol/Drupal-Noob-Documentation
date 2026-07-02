@@ -34,3 +34,4 @@ jobs:
           source: "docs/.vitepress/dist/*"
           target: ${{ secrets.SSH_TARGET_DIR }}
           strip_components: 3
+          port: 2908
