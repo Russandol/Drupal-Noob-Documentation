@@ -16,10 +16,15 @@ features:
     title: DDEV
     details: Mettre en place un environnement de développement local avec DDEV.
     link: /ddev/
+  - icon: 🍳
+    title: Les Recipes
+    details: Automatiser l'installation de modules, de thèmes et de configurations.
+    link: /recipes/introduction
   - icon: 🖼️
     title: Drupal Canvas
     details: Comprendre et bien utiliser Drupal Canvas.
     link: /drupal-canvas/
+
     
 #  - icon: 📁
 #    title: Le projet
