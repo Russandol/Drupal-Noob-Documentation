@@ -108,7 +108,7 @@ Le template Twig reçoit les props déclarées dans le `.component.yml` comme va
 
 ### L'objet `attributes`
 
-L'objet `{{ attributes }}` est automatiquement mis à disposition dans tout template SDC par Drupal. Il transporte :
+L'objet `attributes` est automatiquement mis à disposition dans tout template SDC par Drupal. Il transporte :
 - Les classes CSS ajoutées par Drupal ou Canvas
 - Les attributs `id`, `data-*`, etc.
 

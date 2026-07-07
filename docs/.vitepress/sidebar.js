@@ -1,9 +1,11 @@
 import ddev from "./sidebars/ddev";
-import drupalCanvas from "./sidebars/drupal-canvas";
+import modules from "./sidebars/modules";
 import recipes from "./sidebars/recipes";
+import drupalCanvas from "./sidebars/drupal-canvas";
 
 export default [
   ddev,
-  drupalCanvas,
+  modules,
   recipes,
+  drupalCanvas,
 ]

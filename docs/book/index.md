@@ -16,6 +16,10 @@ features:
     title: DDEV
     details: Mettre en place un environnement de développement local avec DDEV.
     link: /ddev/
+  - icon: 🧩
+    title: Les Modules
+    details: Les modules Drupal.
+    link: /modules/
   - icon: 🍳
     title: Les Recipes
     details: Automatiser l'installation de modules, de thèmes et de configurations.

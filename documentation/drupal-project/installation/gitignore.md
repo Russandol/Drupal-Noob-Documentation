@@ -51,12 +51,3 @@ web/sites/*/files
 web/sites/*/private
 
 ```
-
-::: warning ⚠️ Ce fichier n'est pas statique
-Au fur et à mesure de notre projet, nous reviendrons sur ce fichier pour le mettre à jour en fonction de nos besoins.
-:::
-
-::: info Notre tout premier module
-Pour faciliter la gestion du projet, avant d'aller plus loin dans la formation je vous propose de découvrir et d'installer
-notre tout premier module : [Drush](/drupal-project/installation/drush)
-:::
